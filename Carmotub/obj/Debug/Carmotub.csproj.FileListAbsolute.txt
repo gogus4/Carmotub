@@ -1,0 +1,13 @@
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\Carmotub.exe.config
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\Carmotub.exe
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\Carmotub.pdb
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\MainWindow.baml
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\MainWindow.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\App.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub_MarkupCompile.cache
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.g.resources
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.Properties.Resources.resources
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csproj.GenerateResource.Cache
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.exe
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.pdb
