@@ -11,3 +11,10 @@ C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.Properties.
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csproj.GenerateResource.Cache
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.exe
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.pdb
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\ActionsCustomers.baml
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\ActionsCustomers.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub_MarkupCompile.lref
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\WpfScheduler.dll
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\Calendar.baml
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\Calendar.g.cs

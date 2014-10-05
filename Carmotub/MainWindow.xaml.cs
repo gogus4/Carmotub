@@ -15,14 +15,23 @@ using System.Windows.Shapes;
 
 namespace Carmotub
 {
-    /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void DisplayCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            ListCustomers.Visibility = Visibility.Collapsed;
+            Calendar.Visibility = Visibility.Visible;
+        }
+
+        private void DisplayListCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            ListCustomers.Visibility = Visibility.Visible;
+            Calendar.Visibility = Visibility.Collapsed;
         }
     }
 }
