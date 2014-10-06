@@ -6,13 +6,46 @@
              mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="OKK"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+            <TextBlock Text="Rechercher par :" FontSize="12" FontFamily="Segoe UI Light"/>
+
+            <ComboBox x:Name="SearchBy" Margin="5,0,0,0" SelectedIndex="0" Width="100" FontSize="12" FontFamily="Segoe UI Light">
+                <ComboBoxItem>Nom</ComboBoxItem>
+                <ComboBoxItem>Rue</ComboBoxItem>
+                <ComboBoxItem>Code Postal</ComboBoxItem>
+                <ComboBoxItem>Numéro de téléphone fixe</ComboBoxItem>
+                <ComboBoxItem>Numéro de téléphone portable</ComboBoxItem>
+                <ComboBoxItem>Rendez-vous</ComboBoxItem>
+                <ComboBoxItem>Mois</ComboBoxItem>
+            </ComboBox>
+
+            <DockPanel>
+                <Button BorderThickness="0" DockPanel.Dock="Left" HorizontalAlignment="Right" Height="28" Width="23">
+                    <DynamicResource ResourceKey="SearchBar"/>
+                </Button>
+                <TextBox Text="Search..." FontSize="16" HorizontalAlignment="Stretch" Background="Transparent"/>
+            </DockPanel>
         </StackPanel>
+        
+        <Grid Grid.Row="1">
+            <DataGrid Background="White" HorizontalAlignment="Stretch" ItemsSource="{Binding test}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding GameName}" />
+                    <DataGridTextColumn Header="Prénom" Binding="{Binding Creator}" />
+                    <DataGridTextColumn Header="Ville" Binding="{Binding Publisher}" />
+                    <DataGridTextColumn Header="Code postal" Binding="{Binding Publisher}" />
+                    <DataGridTextColumn Header="Num tel fixe " Binding="{Binding Publisher}" />
+                    <DataGridTextColumn Header="Num tel portable" Binding="{Binding Publisher}" />
+                    <DataGridTextColumn Header="Rendez vous" Binding="{Binding Publisher}" />
+                    <DataGridTextColumn Header="Recommandé par" Binding="{Binding Publisher}" />
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 
         <Grid Grid.Row="1">
 
