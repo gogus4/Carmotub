@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Carmotub.Model;
+using Carmotub.ViewModel;
+using Carmotub.Views.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +35,11 @@ namespace Carmotub
         {
             ListCustomers.Visibility = Visibility.Visible;
             Calendar.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

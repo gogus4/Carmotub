@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="Carmotub.Views.Controls.Calendar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:my="clr-namespace:WpfScheduler;assembly=WpfScheduler">
+        xmlns:my="clr-namespace:WpfScheduler;assembly=WpfScheduler" Initialized="UserControl_Initialized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -27,8 +27,8 @@
         <my:Scheduler
             Grid.Row="1"
             HorizontalAlignment="Stretch" Name="scheduler1" VerticalAlignment="Stretch"
-            StartJourney="9:00"
-            EndJourney="19:00"
+            StartJourney="00:00"
+            EndJourney="23:59"
             OnEventDoubleClick="scheduler1_OnEventDoubleClick"
             OnScheduleDoubleClick="scheduler1_OnScheduleDoubleClick"
             Mode="Month">

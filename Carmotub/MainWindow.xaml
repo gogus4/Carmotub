@@ -531,7 +531,7 @@
         <Ribbon Template="{StaticResource template}" Grid.Row="0" VerticalAlignment="Top" BorderBrush="LightGray" Foreground="Black" Background="White">
             <RibbonTab Header="Fonctions">
                 <RibbonGroup Header="Actions">
-                    <RibbonButton VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/add_customer.png" Label="Nouveau client"/>
+                    <RibbonButton x:Name="AddCustomer" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/add_customer.png" Label="Nouveau client" Click="AddCustomer_Click"/>
                     <RibbonButton VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/remove_customer.png" Label="Supprimer le client"/>
                     <RibbonButton VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/add_intervention.png" Label="Nouvelle intervention"/>
                     <RibbonButton VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/print.png" Label="Imprimer"/>

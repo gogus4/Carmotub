@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Carmotub.Model;
+using Carmotub.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,21 +25,6 @@ namespace Carmotub.Views.Controls
         public Calendar()
         {
             InitializeComponent();
-            InitialiseScheduler();
-        }
-
-        private void InitialiseScheduler()
-        {
-            CurrentDate = DateTime.Now;
-            SelectMonth(CurrentDate.Month);
-
-            scheduler1.SelectedDate = CurrentDate;
-            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1),End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255,205,230,247)),Subject = "Client blablabla" });
-            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
-            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
-            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
-            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
-            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
         }
 
         private void scheduler1_OnEventDoubleClick(object sender, Event ev)
@@ -103,21 +91,46 @@ namespace Carmotub.Views.Controls
             }
         }
 
-        private void AddMonth_Click(object sender, RoutedEventArgs e)
+        private async void AddMonth_Click(object sender, RoutedEventArgs e)
         {
             CurrentDate = CurrentDate.AddMonths(1);
             scheduler1.SelectedDate = CurrentDate;
-
             SelectMonth(CurrentDate.Month);
+
+            await refreshCalendar();
         }
 
-        private void RemoveMonth_Click(object sender, RoutedEventArgs e)
+        private async void RemoveMonth_Click(object sender, RoutedEventArgs e)
         {
             CurrentDate = CurrentDate.AddMonths(-1);
             scheduler1.SelectedDate = CurrentDate;
-
             SelectMonth(CurrentDate.Month);
+
+            await refreshCalendar();
         }
-        
+
+        private async void UserControl_Initialized(object sender, EventArgs e)
+        {
+            CurrentDate = DateTime.Now;
+            await InterventionVM.Instance.GetAllIntervention();
+
+            await refreshCalendar();
+        }
+
+        private async Task refreshCalendar()
+        {
+            scheduler1.SelectedDate = CurrentDate;
+
+            var interventions = InterventionVM.Instance.Interventions.Where(x => x.date_intervention.Month == CurrentDate.Month && x.date_intervention.Year == CurrentDate.Year);
+
+            foreach (var inter in interventions)
+            {
+                var customer = ((Customer)ActionsCustomers.Instance.Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault());
+                Event evenement = new Event() { Start = inter.date_intervention, End = inter.date_intervention, Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = customer.nom + " " + customer.adresse };
+
+                if (scheduler1.Events.Where(x => x.Subject == customer.nom + " " + customer.adresse).FirstOrDefault() == null)
+                    scheduler1.Events.Add(evenement);
+            }
+        }
     }
 }

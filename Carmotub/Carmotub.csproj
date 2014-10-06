@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Classic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,6 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\SQLDataHelper.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Intervention.cs" />
+    <Compile Include="ViewModel\CustomerVM.cs" />
+    <Compile Include="ViewModel\InterventionVM.cs" />
     <Compile Include="Views\Controls\ActionsCustomers.xaml.cs">
       <DependentUpon>ActionsCustomers.xaml</DependentUpon>
     </Compile>
@@ -121,10 +127,7 @@
   <ItemGroup>
     <Resource Include="Assets\Ribbon\add_customer.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\Ribbon\add_intervention.png" />
   </ItemGroup>
