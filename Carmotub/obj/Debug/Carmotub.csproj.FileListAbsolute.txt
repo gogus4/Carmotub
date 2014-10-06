@@ -17,3 +17,4 @@ C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\GeneratedInternalTyp
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub_MarkupCompile.lref
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\Calendar.baml
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\Calendar.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\WpfScheduler.dll

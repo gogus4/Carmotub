@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfScheduler;
 
 namespace Carmotub.Views.Controls
 {
@@ -26,7 +27,7 @@ namespace Carmotub.Views.Controls
 
         private void InitialiseScheduler()
         {
-            /*CurrentDate = DateTime.Now;
+            CurrentDate = DateTime.Now;
             SelectMonth(CurrentDate.Month);
 
             scheduler1.SelectedDate = CurrentDate;
@@ -35,10 +36,10 @@ namespace Carmotub.Views.Controls
             scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
             scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
             scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
-            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });*/
+            scheduler1.Events.Add(new Event() { Start = DateTime.Now.AddDays(1), End = DateTime.Now.AddDays(1), Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = "Client blablabla" });
         }
 
-        /*private void scheduler1_OnEventDoubleClick(object sender, Event ev)
+        private void scheduler1_OnEventDoubleClick(object sender, Event ev)
         {
 
         }
@@ -46,7 +47,7 @@ namespace Carmotub.Views.Controls
         private void scheduler1_OnScheduleDoubleClick(object sender, DateTime ev)
         {
 
-        }*/
+        }
 
         private void SelectMonth(int month)
         {
@@ -104,18 +105,18 @@ namespace Carmotub.Views.Controls
 
         private void AddMonth_Click(object sender, RoutedEventArgs e)
         {
-            /*CurrentDate = CurrentDate.AddMonths(1);
+            CurrentDate = CurrentDate.AddMonths(1);
             scheduler1.SelectedDate = CurrentDate;
 
-            SelectMonth(CurrentDate.Month);*/
+            SelectMonth(CurrentDate.Month);
         }
 
         private void RemoveMonth_Click(object sender, RoutedEventArgs e)
         {
-            /*CurrentDate = CurrentDate.AddMonths(-1);
+            CurrentDate = CurrentDate.AddMonths(-1);
             scheduler1.SelectedDate = CurrentDate;
 
-            SelectMonth(CurrentDate.Month);*/
+            SelectMonth(CurrentDate.Month);
         }
         
     }
