@@ -536,7 +536,6 @@
                     <RibbonButton VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/add_intervention.png" Label="Nouvelle intervention"/>
                     <RibbonButton VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/print.png" Label="Imprimer"/>
                 </RibbonGroup>
-
             </RibbonTab>
 
             <RibbonTab Header="Affichage">

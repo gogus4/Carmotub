@@ -24,7 +24,7 @@
             <TextBlock x:Name="CurrentMonthAndYear" FontSize="20" FontFamily="Segoe UI" Margin="5,0,0,0" VerticalAlignment="Center"/>
         </StackPanel>
         
-        <my:Scheduler
+        <!-- <my:Scheduler
             Grid.Row="1"
             HorizontalAlignment="Stretch" Name="scheduler1" VerticalAlignment="Stretch"
             StartJourney="9:00"
@@ -32,6 +32,6 @@
             OnEventDoubleClick="scheduler1_OnEventDoubleClick"
             OnScheduleDoubleClick="scheduler1_OnScheduleDoubleClick"
             Mode="Month">
-        </my:Scheduler>
+        </my:Scheduler> -->
     </Grid>
 </UserControl>

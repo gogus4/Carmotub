@@ -13,7 +13,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
             <TextBlock Text="Rechercher par :" FontSize="12" FontFamily="Segoe UI Light"/>
 
-            <ComboBox x:Name="SearchBy" Margin="5,0,0,0" SelectedIndex="0" Width="100" FontSize="12" FontFamily="Segoe UI Light">
+            <ComboBox x:Name="SearchBy" Margin="5,0,0,0" VerticalAlignment="Center" SelectedIndex="0" Width="100" BorderBrush="LightGray" FontSize="12" FontFamily="Segoe UI Light">
                 <ComboBoxItem>Nom</ComboBoxItem>
                 <ComboBoxItem>Rue</ComboBoxItem>
                 <ComboBoxItem>Code Postal</ComboBoxItem>
@@ -23,14 +23,19 @@
                 <ComboBoxItem>Mois</ComboBoxItem>
             </ComboBox>
 
-            <DockPanel>
-                <Button BorderThickness="0" DockPanel.Dock="Left" HorizontalAlignment="Right" Height="28" Width="23">
-                    <DynamicResource ResourceKey="SearchBar"/>
-                </Button>
-                <TextBox Text="Search..." FontSize="16" HorizontalAlignment="Stretch" Background="Transparent"/>
-            </DockPanel>
+            <Border Margin="10,0,0,0" BorderBrush="LightGray" BorderThickness="1" Background="White">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="200" BorderBrush="Transparent" BorderThickness="0"/>
+                    <Button Background="Transparent" BorderBrush="Transparent">
+                        <Button.Content>
+                            <Image Source="/Carmotub;component/Assets/search.png"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Border>
+
         </StackPanel>
-        
+
         <Grid Grid.Row="1">
             <DataGrid Background="White" HorizontalAlignment="Stretch" ItemsSource="{Binding test}">
                 <DataGrid.Columns>
