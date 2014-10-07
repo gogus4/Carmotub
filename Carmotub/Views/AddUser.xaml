@@ -71,8 +71,8 @@
         <TextBlock Text="Commentaire : " FontFamily="Segoe UI Light" Grid.Row="14" Grid.ColumnSpan="4" Margin="5,0,0,0"/>
 
         <StackPanel Orientation="Vertical" Grid.Row="16" Grid.ColumnSpan="4" Margin="5,0,5,0">
-            <RichTextBox ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Segoe UI Light" Height="110"/>
-            <Button Content="Ajouter le client" FontFamily="Segoe UI Light" FontSize="12" Width="120" HorizontalAlignment="Left" Margin="0,5,0,0"/>
+            <RichTextBox x:Name="Commentaire" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Segoe UI Light" Height="110"/>
+            <Button x:Name="AddCustomer" Content="Ajouter le client" FontFamily="Segoe UI Light" FontSize="12" Width="120" HorizontalAlignment="Left" Margin="0,5,0,0" Click="AddCustomer_Click"/>
         </StackPanel>
     </Grid>
 </Window>

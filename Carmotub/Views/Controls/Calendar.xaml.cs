@@ -21,10 +21,23 @@ namespace Carmotub.Views.Controls
 {
     public partial class Calendar : UserControl
     {
+        private static Calendar _instance = null;
+        public static Calendar Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new Calendar();
+                return _instance;
+            }
+        }
+
         public DateTime CurrentDate { get; set; }
         public Calendar()
         {
             InitializeComponent();
+
+            _instance = this;
         }
 
         private void scheduler1_OnEventDoubleClick(object sender, Event ev)
@@ -117,9 +130,10 @@ namespace Carmotub.Views.Controls
             await refreshCalendar();
         }
 
-        private async Task refreshCalendar()
+        public async Task refreshCalendar()
         {
             scheduler1.SelectedDate = CurrentDate;
+            SelectMonth(CurrentDate.Month);
 
             var interventions = InterventionVM.Instance.Interventions.Where(x => x.date_intervention.Month == CurrentDate.Month && x.date_intervention.Year == CurrentDate.Year);
 
@@ -128,9 +142,11 @@ namespace Carmotub.Views.Controls
                 var customer = ((Customer)ActionsCustomers.Instance.Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault());
                 Event evenement = new Event() { Start = inter.date_intervention, End = inter.date_intervention, Color = new SolidColorBrush(Color.FromArgb(255, 205, 230, 247)), Subject = customer.nom + " " + customer.adresse };
 
-                if (scheduler1.Events.Where(x => x.Subject == customer.nom + " " + customer.adresse).FirstOrDefault() == null)
+                if (scheduler1.Events.Where(x => x.Subject == customer.nom + " " + customer.adresse && x.Start == evenement.Start).FirstOrDefault() == null)
                     scheduler1.Events.Add(evenement);
             }
+
+
         }
     }
 }

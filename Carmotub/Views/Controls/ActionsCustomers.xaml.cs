@@ -46,8 +46,13 @@ namespace Carmotub.Views.Controls
 
         private async void UserControl_Initialized(object sender, EventArgs e)
         {
+            await Init();
+        }
+
+        public async Task Init()
+        {
             Customers = await CustomerVM.Instance.GetAllCustomer();
-            this.DataContext = this;
+            DataGridCustomers.ItemsSource = Customers;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

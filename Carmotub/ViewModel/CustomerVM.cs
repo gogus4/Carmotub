@@ -27,33 +27,59 @@ namespace Carmotub.ViewModel
         {
         }
 
-        public async Task<bool> AddCustomer(Customer customer)
+        public async Task<bool> DeleteCustomer(Customer customer)
         {
-            /*try
+            try
             {
-                string query = "INSERT INTO clients(adresse_siege,code_postal,ville,nom,indice_contact,numero_telephone_1,numero_telephone_2,numero_telephone_3,adresse_email,numero_fax,indice_assurance) VALUES(@adresse_siege,@code_postal,@ville,@nom,@indice_contact,@numero_telephone_1,@numero_telephone_2,@numero_telephone_3,@adresse_email,@numero_fax,@indice_assurance)";
+                string query = "DELETE FROM clients WHERE identifiant = @identifiant";
                 await SQLDataHelper.Instance.OpenConnection();
+
+                await InterventionVM.Instance.DeleteInterventionWithCustomer(customer);
 
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
                 cmd.Prepare();
 
-                cmd.Parameters.Add("@adresse_siege", _client.adresse_siege);
-                cmd.Parameters.Add("@code_postal", _client.code_postal);
-                cmd.Parameters.Add("@ville", _client.ville);
-                cmd.Parameters.Add("@nom", _client.nom);
-                cmd.Parameters.Add("@indice_contact", _client.indice_contact);
-                cmd.Parameters.Add("@numero_telephone_1", _client.numero_telephone_1);
-                cmd.Parameters.Add("@numero_telephone_2", _client.numero_telephone_2);
-                cmd.Parameters.Add("@numero_telephone_3", _client.numero_telephone_3);
-                cmd.Parameters.Add("@adresse_email", _client.adresse_email);
-                cmd.Parameters.Add("@numero_fax", _client.numero_fax);
-                cmd.Parameters.Add("@indice_assurance", _client.indice_assurance);
+                cmd.Parameters.Add("@identifiant", customer.identifiant);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception E)
             {
                 return false;
-            }*/
+            }
+
+            return true;
+        }
+
+        public async Task<bool> AddCustomer(Customer customer)
+        {
+            try
+            {
+                string query = "INSERT INTO clients(nom,prenom,adresse,code_postal,ville,etage,escalier,telephone_1,telephone_2,commentaire,recommande_par,code,rdv) VALUES(@nom,@prenom,@adresse,@code_postal,@ville,@etage,@escalier,@telephone_1,@telephone_2,@commentaire,@recommande_par,@code,@rdv)";
+                await SQLDataHelper.Instance.OpenConnection();
+
+                MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
+                cmd.Prepare();
+
+                cmd.Parameters.Add("@nom", customer.nom);
+                cmd.Parameters.Add("@prenom", customer.prenom);
+                cmd.Parameters.Add("@adresse", customer.adresse);
+                cmd.Parameters.Add("@code_postal", customer.code_postal);
+                cmd.Parameters.Add("@ville", customer.ville);
+                cmd.Parameters.Add("@etage", customer.etage);
+                cmd.Parameters.Add("@escalier", customer.escalier);
+                cmd.Parameters.Add("@telephone_1", customer.telephone_1);
+                cmd.Parameters.Add("@telephone_2", customer.telephone_2);
+                cmd.Parameters.Add("@commentaire", customer.commentaire);
+                cmd.Parameters.Add("@recommande_par", customer.recommande_par);
+                cmd.Parameters.Add("@code", customer.code);
+                cmd.Parameters.Add("@rdv", customer.Rdv);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception E)
+            {
+                return false;
+            }
 
             return true;
         }

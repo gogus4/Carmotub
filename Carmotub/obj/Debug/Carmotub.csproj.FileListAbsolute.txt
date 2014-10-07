@@ -2,9 +2,13 @@ C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\Carmotub.exe
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\Carmotub.exe.config
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\Carmotub.pdb
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\bin\Debug\WpfScheduler.dll
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddIntervention.baml
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddUser.baml
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\ActionsCustomers.baml
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\Calendar.baml
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\MainWindow.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddIntervention.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddUser.g.cs
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\ActionsCustomers.g.cs
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\Controls\Calendar.g.cs
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\App.g.cs
@@ -17,6 +21,3 @@ C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.Properties.
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csproj.GenerateResource.Cache
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.exe
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.pdb
-C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csprojResolveAssemblyReference.cache
-C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddUser.baml
-C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddUser.g.cs
