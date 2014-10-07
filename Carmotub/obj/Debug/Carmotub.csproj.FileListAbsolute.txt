@@ -18,3 +18,5 @@ C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csproj.Gene
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.exe
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.pdb
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddUser.baml
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddUser.g.cs

@@ -27,6 +27,37 @@ namespace Carmotub.ViewModel
         {
         }
 
+        public async Task<bool> AddCustomer(Customer customer)
+        {
+            /*try
+            {
+                string query = "INSERT INTO clients(adresse_siege,code_postal,ville,nom,indice_contact,numero_telephone_1,numero_telephone_2,numero_telephone_3,adresse_email,numero_fax,indice_assurance) VALUES(@adresse_siege,@code_postal,@ville,@nom,@indice_contact,@numero_telephone_1,@numero_telephone_2,@numero_telephone_3,@adresse_email,@numero_fax,@indice_assurance)";
+                await SQLDataHelper.Instance.OpenConnection();
+
+                MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
+                cmd.Prepare();
+
+                cmd.Parameters.Add("@adresse_siege", _client.adresse_siege);
+                cmd.Parameters.Add("@code_postal", _client.code_postal);
+                cmd.Parameters.Add("@ville", _client.ville);
+                cmd.Parameters.Add("@nom", _client.nom);
+                cmd.Parameters.Add("@indice_contact", _client.indice_contact);
+                cmd.Parameters.Add("@numero_telephone_1", _client.numero_telephone_1);
+                cmd.Parameters.Add("@numero_telephone_2", _client.numero_telephone_2);
+                cmd.Parameters.Add("@numero_telephone_3", _client.numero_telephone_3);
+                cmd.Parameters.Add("@adresse_email", _client.adresse_email);
+                cmd.Parameters.Add("@numero_fax", _client.numero_fax);
+                cmd.Parameters.Add("@indice_assurance", _client.indice_assurance);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception E)
+            {
+                return false;
+            }*/
+
+            return true;
+        }
+
         public async Task<List<Customer>> GetAllCustomer()
         {
             try

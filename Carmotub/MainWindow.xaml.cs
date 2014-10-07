@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Carmotub.Views;
 
 namespace Carmotub
 {
@@ -39,7 +40,8 @@ namespace Carmotub
 
         private void AddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            
+            AddUser addUser = new AddUser();
+            addUser.Show();
         }
     }
 }
