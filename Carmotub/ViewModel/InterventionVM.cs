@@ -52,6 +52,36 @@ namespace Carmotub.ViewModel
             return true;
         }
 
+        public async Task<bool> UpdateIntervention(Intervention intervention)
+        {
+            try
+            {
+                string query = "UPDATE interventions SET date_intervention = @date_intervention, type_chaudiere = @type_chaudiere, carnet = @carnet, nature = @nature, montant = @montant, numero_cheque = @numero_cheque, type_paiement = @type_paiement WHERE identifiant = @identifiant";
+                await SQLDataHelper.Instance.OpenConnection();
+
+
+                MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
+                cmd.Prepare();
+
+                cmd.Parameters.Add("@date_intervention", intervention.date_intervention);
+                cmd.Parameters.Add("@type_chaudiere", intervention.type_chaudiere);
+                cmd.Parameters.Add("@carnet", intervention.carnet);
+                cmd.Parameters.Add("@nature", intervention.nature);
+                cmd.Parameters.Add("@montant", intervention.montant);
+                cmd.Parameters.Add("@numero_cheque", intervention.numero_cheque);
+                cmd.Parameters.Add("@type_paiement", intervention.type_paiement);
+                cmd.Parameters.Add("@identifiant", intervention.identifiant);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception E)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public async Task<bool> AddIntervention(Intervention intervention)
         {
             try
