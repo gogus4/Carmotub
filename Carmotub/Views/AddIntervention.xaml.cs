@@ -51,12 +51,15 @@ namespace Carmotub.Views
         {
             try
             {
+                double montant;
+                bool result = Double.TryParse(Montant.Text.Replace(".", ","), out montant);
+
                 Intervention intervention = new Intervention()
                 {
                     carnet = Carnet.Text,
                     date_intervention = Convert.ToDateTime(DateIntervention.Text),
                     identifiant_client = Customer.identifiant,
-                    montant = double.Parse(Montant.Text),
+                    montant = montant,
                     nature = Nature.Text,
                     numero_cheque = NumeroCheque.Text,
                     type_chaudiere = TypeChaudiere.Text,

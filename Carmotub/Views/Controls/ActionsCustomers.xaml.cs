@@ -105,8 +105,8 @@ namespace Carmotub.Views.Controls
             {
                 var customer = (Customer)DataGridCustomers.SelectedItem;
 
-                UpdateUser updateUser = new UpdateUser(customer);
-                updateUser.Show();
+                UpdateCustomer UpdateCustomer = new UpdateCustomer(customer);
+                UpdateCustomer.Show();
             }
             catch (Exception E)
             {

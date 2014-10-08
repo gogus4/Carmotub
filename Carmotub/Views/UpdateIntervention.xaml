@@ -1,7 +1,7 @@
-﻿<Window x:Class="Carmotub.Views.AddIntervention"
+﻿<Window x:Class="Carmotub.Views.UpdateIntervention"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Ajouter une intervention" Height="280" Width="630" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Modifier une intervention" Height="280" Width="630" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -41,27 +41,28 @@
         </StackPanel>
 
         <TextBlock Text="Date de l'intervention : " VerticalAlignment="Center" FontFamily="Segoe UI Light" Grid.Row="3" Grid.Column="0" Margin="5,0,0,0"/>
-        <DatePicker x:Name="DateIntervention" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="3" Grid.Column="1"/>
+        <DatePicker x:Name="DateIntervention" SelectedDate="{Binding Intervention.date_intervention}" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="3" Grid.Column="1"/>
 
         <TextBlock Text="Type de chaudière : " VerticalAlignment="Center" FontFamily="Segoe UI Light" Grid.Row="3" Grid.Column="2" Margin="5,0,0,0"/>
-        <TextBox x:Name="TypeChaudiere" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="3" Grid.Column="3"/>
+        <TextBox x:Name="TypeChaudiere" Text="{Binding Intervention.type_chaudiere}" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="3" Grid.Column="3"/>
 
         <TextBlock Text="Carnet : " VerticalAlignment="Center" FontFamily="Segoe UI Light" Grid.Row="5" Grid.Column="0" Margin="5,0,0,0"/>
-        <TextBox x:Name="Carnet" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="5" Grid.Column="1"/>
+        <TextBox x:Name="Carnet" Text="{Binding Intervention.carnet}" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="5" Grid.Column="1"/>
 
         <TextBlock Text="Nature : " VerticalAlignment="Center" FontFamily="Segoe UI Light" Grid.Row="5" Grid.Column="2" Margin="5,0,0,0"/>
-        <TextBox x:Name="Nature" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="5" Grid.Column="3"/>
+        <TextBox x:Name="Nature" Text="{Binding Intervention.nature}" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="5" Grid.Column="3"/>
 
         <TextBlock Text="Montant : " VerticalAlignment="Center" FontFamily="Segoe UI Light" Grid.Row="7" Grid.Column="0" Margin="5,0,0,0"/>
-        <TextBox x:Name="Montant" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="7" Grid.Column="1"/>
+        <TextBox x:Name="Montant" Text="{Binding Intervention.montant}" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="7" Grid.Column="1"/>
 
         <TextBlock Text="Type de paiement : " VerticalAlignment="Center" FontFamily="Segoe UI Light" Grid.Row="7" Grid.Column="2" Margin="5,0,0,0"/>
-        <TextBox x:Name="TypePaiement" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="7" Grid.Column="3"/>
+        <TextBox x:Name="TypePaiement" Text="{Binding Intervention.type_paiement}" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="7" Grid.Column="3"/>
 
         <TextBlock Text="Numéro de chèque : " VerticalAlignment="Center" FontFamily="Segoe UI Light" Grid.Row="9" Grid.Column="0" Margin="5,0,0,0"/>
-        <TextBox x:Name="NumeroCheque" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="9" Grid.Column="1"/>
+        <TextBox x:Name="NumeroCheque" Text="{Binding Intervention.numero_cheque}" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Height="25" Width="160" Grid.Row="9" Grid.Column="1"/>
 
-        <Button x:Name="AddInterventionButton" Content="Ajouter l'intervention" Margin="5,0,0,0" FontFamily="Segoe UI Light" Grid.Row="11" Grid.ColumnSpan="2" FontSize="12" Width="130" HorizontalAlignment="Left" Click="AddInterventionButton_Click"  />
+        <Button x:Name="UpdateInterventionButton" Content="Modifier l'intervention" Margin="5,0,0,0" FontFamily="Segoe UI Light" Grid.Row="11" Grid.ColumnSpan="2" FontSize="12" Width="130" HorizontalAlignment="Left" Click="UpdateIntervention_Click"  />
+        <Button x:Name="DeleteInterventionButton" Content="Supprimer l'intervention" Margin="10,0,0,0" FontFamily="Segoe UI Light" Grid.Row="11" Grid.Column="1" FontSize="12" Width="130" HorizontalAlignment="Left" Click="DeleteInterventionButton_Click" />
 
     </Grid>
 </Window>

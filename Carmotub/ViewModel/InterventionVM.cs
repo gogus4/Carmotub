@@ -43,6 +43,8 @@ namespace Carmotub.ViewModel
 
                 cmd.Parameters.Add("@identifiant_client", customer.identifiant);
                 cmd.ExecuteNonQuery();
+
+                await GetAllIntervention();
             }
             catch (Exception E)
             {
@@ -59,7 +61,6 @@ namespace Carmotub.ViewModel
                 string query = "UPDATE interventions SET date_intervention = @date_intervention, type_chaudiere = @type_chaudiere, carnet = @carnet, nature = @nature, montant = @montant, numero_cheque = @numero_cheque, type_paiement = @type_paiement WHERE identifiant = @identifiant";
                 await SQLDataHelper.Instance.OpenConnection();
 
-
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
                 cmd.Prepare();
 
@@ -73,6 +74,8 @@ namespace Carmotub.ViewModel
                 cmd.Parameters.Add("@identifiant", intervention.identifiant);
 
                 cmd.ExecuteNonQuery();
+
+                await GetAllIntervention();
             }
             catch (Exception E)
             {
@@ -103,6 +106,29 @@ namespace Carmotub.ViewModel
 
                 cmd.ExecuteNonQuery();
                 _interventions.Add(intervention);
+            }
+            catch (Exception E)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task<bool> DeleteIntervention(Intervention intervention)
+        {
+            try
+            {
+                string query = "DELETE FROM interventions WHERE identifiant = @identifiant";
+                await SQLDataHelper.Instance.OpenConnection();
+
+                MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
+                cmd.Prepare();
+
+                cmd.Parameters.Add("@identifiant", intervention.identifiant);
+                cmd.ExecuteNonQuery();
+
+                await GetAllIntervention();
             }
             catch (Exception E)
             {
