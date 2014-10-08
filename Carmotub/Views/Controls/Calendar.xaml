@@ -22,6 +22,13 @@
             </Button>
             
             <TextBlock x:Name="CurrentMonthAndYear" FontSize="20" FontFamily="Segoe UI" Margin="5,0,0,0" VerticalAlignment="Center"/>
+
+            <Button x:Name="RefreshCalendar" FontSize="20" Background="Transparent" BorderBrush="Transparent" Margin="5,0,0,0" Height="32" Width="32" Click="RefreshCalendar_Click">
+                <Button.Content>
+                    <Image Source="/Carmotub;component/Assets/refresh.png" />
+                </Button.Content>
+            </Button>
+
         </StackPanel>
         
         <my:Scheduler

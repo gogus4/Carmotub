@@ -21,3 +21,6 @@ C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.Properties.
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csproj.GenerateResource.Cache
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.exe
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.pdb
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Carmotub.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\UpdateUser.baml
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\UpdateUser.g.cs

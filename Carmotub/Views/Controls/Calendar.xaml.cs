@@ -50,7 +50,7 @@ namespace Carmotub.Views.Controls
 
         }
 
-        private void SelectMonth(int month)
+        public void SelectMonth(int month)
         {
             switch (month)
             {
@@ -145,8 +145,18 @@ namespace Carmotub.Views.Controls
                 if (scheduler1.Events.Where(x => x.Subject == customer.nom + " " + customer.adresse && x.Start == evenement.Start).FirstOrDefault() == null)
                     scheduler1.Events.Add(evenement);
             }
+        }
 
+        private async void RefreshCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentDate = CurrentDate.AddMonths(1);
+            scheduler1.SelectedDate = CurrentDate;
 
+            CurrentDate = CurrentDate.AddMonths(-1);
+            scheduler1.SelectedDate = CurrentDate;
+            SelectMonth(CurrentDate.Month);
+
+            await refreshCalendar();
         }
     }
 }

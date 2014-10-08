@@ -37,14 +37,14 @@
         </StackPanel>
 
         <Grid Grid.Row="1">
-            <DataGrid x:Name="DataGridCustomers" ItemsSource="{Binding Customers}" FontFamily="Segoe UI Light" Background="White" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Stretch" CanUserDeleteRows="False" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray">
+            <DataGrid x:Name="DataGridCustomers" ItemsSource="{Binding Customers}" FontFamily="Segoe UI Light" Background="White" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Stretch" CanUserDeleteRows="False" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" MouseDoubleClick="DataGridCustomers_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nom" Binding="{Binding nom}" />
                     <DataGridTextColumn Header="Prénom" Binding="{Binding prenom}" />
                     <DataGridTextColumn Header="Ville" Binding="{Binding ville}" />
                     <DataGridTextColumn Header="Code postal" Binding="{Binding code_postal}" />
                     <DataGridTextColumn Header="Num tel fixe " Binding="{Binding telephone_1}" />
-                    <DataGridTextColumn Header="Rendez vous" Binding="{Binding rdv}" />
+                    <DataGridTextColumn Header="Rendez vous" Binding="{Binding Rdv}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -64,7 +64,7 @@ namespace Carmotub.Views.Controls
             }
 
             List<Customer> list_customers = new List<Customer>();
-            switch(SearchBy.SelectedIndex)
+            switch (SearchBy.SelectedIndex)
             {
                 case 0:
                     list_customers = Customers.Where(x => x.nom.ToUpper().Contains(SearchBoxText.Text.ToUpper())).ToList();
@@ -90,13 +90,28 @@ namespace Carmotub.Views.Controls
                     list_customers = Customers.Where(x => x.telephone_2.ToUpper().Contains(SearchBoxText.Text.ToUpper())).ToList();
                     break;
 
-                    // A COMPLETER
+                // A COMPLETER
                 case 6:
                     list_customers = Customers.Where(x => x.telephone_2.ToUpper().Contains(SearchBoxText.Text.ToUpper())).ToList();
                     break;
             }
 
             DataGridCustomers.ItemsSource = list_customers;
+        }
+
+        private void DataGridCustomers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var customer = (Customer)DataGridCustomers.SelectedItem;
+
+                UpdateUser updateUser = new UpdateUser(customer);
+                updateUser.Show();
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show("Merci de selectionné un client avant de le modifier.", "Aucun client selectionné", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

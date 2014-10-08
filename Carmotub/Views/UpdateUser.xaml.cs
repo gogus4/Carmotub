@@ -17,18 +17,30 @@ using System.Windows.Shapes;
 
 namespace Carmotub.Views
 {
-    public partial class AddUser : Window
+    public partial class UpdateUser : Window
     {
-        public AddUser()
+        public Customer CustomerToUpdate { get; set; }
+
+        public UpdateUser(Customer customer)
         {
             InitializeComponent();
+
+            CustomerToUpdate = customer;
+            this.DataContext = this;
+
+            var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.identifiant_client == CustomerToUpdate.identifiant);
+            DataGridInterventions.ItemsSource = list_interventions;
+
+            Commentaire.Document.Blocks.Clear();
+            Commentaire.Document.Blocks.Add(new Paragraph(new Run(CustomerToUpdate.commentaire)));
         }
 
-        private async void AddCustomer_Click(object sender, RoutedEventArgs e)
+        private async void UpdateCustomer_Click(object sender, RoutedEventArgs e)
         {
             string richText = new TextRange(Commentaire.Document.ContentStart, Commentaire.Document.ContentEnd).Text;
             Customer customer = new Customer()
             {
+                identifiant = CustomerToUpdate.identifiant,
                 adresse = Adresse.Text,
                 code = Code.Text,
                 code_postal = CodePostal.Text,
@@ -44,9 +56,8 @@ namespace Carmotub.Views
                 Rdv = Rdv.Text
             };
 
-            if (await CustomerVM.Instance.AddCustomer(customer) == true)
+            if (await CustomerVM.Instance.UpdateCustomer(customer) == true)
             {
-                ActionsCustomers.Instance.Customers.Add(customer);
                 await ActionsCustomers.Instance.Init();
 
                 this.Close();
@@ -54,7 +65,7 @@ namespace Carmotub.Views
 
             else
             {
-                MessageBox.Show("Une erreur est intervenue lors de l'ajout du client.");
+                MessageBox.Show("Une erreur est intervenue lors de la modification du client.");
             }
         }
     }

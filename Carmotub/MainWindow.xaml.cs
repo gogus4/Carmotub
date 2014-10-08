@@ -31,10 +31,7 @@ namespace Carmotub
             ListCustomers.Visibility = Visibility.Collapsed;
             Calendar.Visibility = Visibility.Visible;
 
-            Carmotub.Views.Controls.Calendar.Instance.CurrentDate = DateTime.Now;
             await Carmotub.Views.Controls.Calendar.Instance.refreshCalendar();
-            Carmotub.Views.Controls.Calendar.Instance.UpdateLayout();
-            this.UpdateLayout();
         }
 
         private async void DisplayListCustomers_Click(object sender, RoutedEventArgs e)
@@ -57,7 +54,7 @@ namespace Carmotub
             {
                 if (MessageBox.Show("Etes-vous sur de vouloir supprimer le client " + customer.nom + " " + customer.prenom, "Supprimer le client", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    if(await CustomerVM.Instance.DeleteCustomer(customer) == true)
+                    if (await CustomerVM.Instance.DeleteCustomer(customer) == true)
                     {
                         ActionsCustomers.Instance.Customers.Add(customer);
                         await ActionsCustomers.Instance.Init();
@@ -70,7 +67,7 @@ namespace Carmotub
             }
 
             else
-                MessageBox.Show("Merci de selectionné un client avant de le supprimer.","Aucun client selectionné",MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("Merci de selectionné un client avant de le supprimer.", "Aucun client selectionné", MessageBoxButton.OK, MessageBoxImage.Warning);
 
         }
 

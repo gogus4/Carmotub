@@ -95,7 +95,7 @@ namespace Carmotub.ViewModel
                 while (dataReader.Read())
                 {
                     double montant;
-                    bool result = Double.TryParse(dataReader["montant"].ToString(), out montant);
+                    bool result = Double.TryParse(dataReader["montant"].ToString().Replace(".",","), out montant);
 
                     _interventions.Add(new Intervention()
                         {

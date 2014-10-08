@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Carmotub.Views
 {
-    /// <summary>
-    /// Logique d'interaction pour AddUser.xaml
-    /// </summary>
     public partial class AddIntervention : Window
     {
         public Customer Customer { get; set; }

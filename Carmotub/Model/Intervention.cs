@@ -10,7 +10,23 @@ namespace Carmotub.Model
     {
         public int identifiant { get; set; }
         public int identifiant_client { get; set; }
-        public DateTime date_intervention { get; set; }
+
+        public string date { get; set; }
+
+        private DateTime date_intervention_private { get; set; }
+        public DateTime date_intervention
+        {
+            get
+            {
+                return date_intervention_private;
+            }
+            set
+            {
+                date_intervention_private = value;
+                date = date_intervention_private.ToString("dd/MM/yyyy");
+            }
+        }
+
         public string type_chaudiere { get; set; }
         public string carnet { get; set; }
         public string nature { get; set; }
