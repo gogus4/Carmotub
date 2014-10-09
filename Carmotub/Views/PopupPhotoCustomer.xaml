@@ -1,0 +1,18 @@
+﻿<Window x:Class="Carmotub.Views.PopupPhotoCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Photo client" Height="500" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Image x:Name="imagePopup" Grid.Row="0"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="5">
+            <Button x:Name="DeletePhoto" FontFamily="Segoe UI Light" Content="Supprimer la photo" Foreground="Black" FontSize="14" Click="DeletePhoto_Click"/>
+            <Button x:Name="ClosePopup" FontFamily="Segoe UI Light" Content="Fermer" Margin="5,0,0,0" Foreground="Black" FontSize="14" Click="ClosePopup_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -66,6 +66,9 @@
     <Compile Include="ViewModel\CustomerPhotoVM.cs" />
     <Compile Include="ViewModel\CustomerVM.cs" />
     <Compile Include="ViewModel\InterventionVM.cs" />
+    <Compile Include="Views\PopupPhotoCustomer.xaml.cs">
+      <DependentUpon>PopupPhotoCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UpdateIntervention.xaml.cs">
       <DependentUpon>UpdateIntervention.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PopupPhotoCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UpdateIntervention.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

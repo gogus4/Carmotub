@@ -26,3 +26,5 @@ C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddCustomer.ba
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\UpdateCustomer.baml
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\AddCustomer.g.cs
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\UpdateCustomer.g.cs
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\PopupPhotoCustomer.baml
+C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\obj\Debug\Views\PopupPhotoCustomer.g.cs
