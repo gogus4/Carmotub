@@ -52,6 +52,8 @@ namespace Carmotub.Views.Controls
         public async Task Init()
         {
             Customers = await CustomerVM.Instance.GetAllCustomer();
+            await CustomerPhotoVM.Instance.GetAllPhoto();
+
             DataGridCustomers.ItemsSource = Customers;
         }
 

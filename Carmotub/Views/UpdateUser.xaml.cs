@@ -17,44 +17,25 @@ using System.Windows.Shapes;
 
 namespace Carmotub.Views
 {
-    public partial class UpdateCustomer : Window
+    public partial class UpdateUser : Window
     {
-        private static UpdateCustomer _instance = null;
-        public static UpdateCustomer Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new UpdateCustomer(null);
-                return _instance;
-            }
-        }
-
         public Customer CustomerToUpdate { get; set; }
 
-        public UpdateCustomer(Customer customer)
+        public UpdateUser(Customer customer)
         {
             InitializeComponent();
 
-            _instance = this;
             CustomerToUpdate = customer;
             this.DataContext = this;
 
-            RefreshDataGridInterventions();
+            var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.identifiant_client == CustomerToUpdate.identifiant);
+            DataGridInterventions.ItemsSource = list_interventions;
 
             Commentaire.Document.Blocks.Clear();
             Commentaire.Document.Blocks.Add(new Paragraph(new Run(CustomerToUpdate.commentaire)));
-        
-            ImageListbox.ItemsSource = CustomerPhotoVM.Instance.Photos.Where(x => x.identifiant_client == customer.identifiant);
         }
 
-        public void RefreshDataGridInterventions()
-        {
-            var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.identifiant_client == CustomerToUpdate.identifiant);
-            DataGridInterventions.ItemsSource = list_interventions;
-        }
-
-        private async void UpdateCustomerButton_Click(object sender, RoutedEventArgs e)
+        private async void UpdateCustomer_Click(object sender, RoutedEventArgs e)
         {
             string richText = new TextRange(Commentaire.Document.ContentStart, Commentaire.Document.ContentEnd).Text;
             Customer customer = new Customer()
@@ -86,14 +67,6 @@ namespace Carmotub.Views
             {
                 MessageBox.Show("Une erreur est intervenue lors de la modification du client.");
             }
-        }
-
-        private void DataGridInterventions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var intervention = (Intervention)DataGridInterventions.SelectedItem;
-
-            UpdateIntervention updateIntervention = new UpdateIntervention(intervention);
-            updateIntervention.Show();
         }
     }
 }

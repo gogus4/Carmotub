@@ -60,8 +60,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\SQLDataHelper.cs" />
+    <Compile Include="Model\CustomerPhoto.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Intervention.cs" />
+    <Compile Include="ViewModel\CustomerPhotoVM.cs" />
     <Compile Include="ViewModel\CustomerVM.cs" />
     <Compile Include="ViewModel\InterventionVM.cs" />
     <Compile Include="Views\UpdateIntervention.xaml.cs">
