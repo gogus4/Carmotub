@@ -91,13 +91,17 @@ namespace Carmotub
 
         private void BackupDatabase_Click(object sender, RoutedEventArgs e)
         {
-            ProgressBackupDatabase.Visibility = Visibility.Visible;
+            GridTransparentLoading.Visibility = Visibility.Visible;
+            ProgressBarLoadingBackupDatabase.Visibility = Visibility.Visible;
+
             CreateBackup();
         }
 
         private void OnDataReceived(object Sender, System.Diagnostics.DataReceivedEventArgs e)
         {
             Dispatcher.Invoke((Action)(() => ProgressBackupDatabase.Value += 1));
+            Dispatcher.Invoke((Action)(() => PourcentProgressBar.Text = Math.Round((ProgressBackupDatabase.Value * 100) / 128,0).ToString() + "%"));
+
 
             if (e.Data != null)
             {
@@ -106,7 +110,8 @@ namespace Carmotub
 
             else
             {
-                ProgressBackupDatabase.Visibility = Visibility.Collapsed;
+                Dispatcher.Invoke((Action)(() => GridTransparentLoading.Visibility = Visibility.Collapsed));
+                Dispatcher.Invoke((Action)(() => ProgressBarLoadingBackupDatabase.Visibility = Visibility.Collapsed));
 
                 OutputStream.Flush();
                 OutputStream.Close();
