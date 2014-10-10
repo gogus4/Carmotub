@@ -535,6 +535,7 @@
                     <RibbonButton x:Name="RemoveCustomer" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/remove_customer.png" Label="Supprimer le client" Click="RemoveCustomer_Click"/>
                     <RibbonButton x:Name="AddIntervention" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/add_intervention.png" Label="Nouvelle intervention" Click="AddIntervention_Click"/>
                     <RibbonButton VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/print.png" Label="Imprimer"/>
+                    <RibbonButton x:Name="BackupDatabase" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/backup_database.png" Label="Sauvegarde" Click="BackupDatabase_Click"/>
                 </RibbonGroup>
             </RibbonTab>
 
@@ -552,7 +553,11 @@
         <Grid Grid.Row="1">
             <UserControl:ActionsCustomers Visibility="Visible" x:Name="ListCustomers"/>
             <UserControl:Calendar Visibility="Collapsed" x:Name="Calendar"/>
+            
+            <ProgressBar x:Name="ProgressBackupDatabase" Height="100" Visibility="Visible" Maximum="128"/>
+
         </Grid>
+
 
     </Grid>
 </Window>

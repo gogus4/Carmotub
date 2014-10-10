@@ -39,6 +39,11 @@ namespace Carmotub.Views.Controls
             _instance = this;
         }
 
+        public void AddValue()
+        {
+            ActionsCustomers.Instance.ProgressBackupDatabase.Value += 1;
+        }
+
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
 

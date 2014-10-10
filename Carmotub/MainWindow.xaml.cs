@@ -16,11 +16,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Carmotub.Views;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 
 namespace Carmotub
 {
     public partial class MainWindow : Window
     {
+        StreamWriter OutputStream;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -82,6 +87,62 @@ namespace Carmotub
 
             else
                 MessageBox.Show("Merci de selectionné un client pour pouvoir affecté l'intervention à un client.", "Aucun client selectionné", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private void BackupDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            ProgressBackupDatabase.Visibility = Visibility.Visible;
+            CreateBackup();
+        }
+
+        private void OnDataReceived(object Sender, System.Diagnostics.DataReceivedEventArgs e)
+        {
+            Dispatcher.Invoke((Action)(() => ProgressBackupDatabase.Value += 1));
+
+            if (e.Data != null)
+            {
+                OutputStream.WriteLine(e.Data);
+            }
+
+            else
+            {
+                ProgressBackupDatabase.Visibility = Visibility.Collapsed;
+
+                OutputStream.Flush();
+                OutputStream.Close();
+            }
+        }
+
+        private void CreateBackup()
+        {
+            string mysqldumpPath = ConfigurationManager.AppSettings["PathMysqlDump"] + "mysqldump.exe";
+            string user = "root";
+            string dbnm = "carmotub";
+
+            string cmd = String.Format("-u{0} --opt --databases {1}", user, dbnm);
+
+            string filePath = ConfigurationManager.AppSettings["PathUsbDatabase"] + "db" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + ".sql";
+            OutputStream = new StreamWriter(filePath);
+
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.FileName = mysqldumpPath;
+            startInfo.Arguments = cmd;
+
+            startInfo.RedirectStandardError = true;
+            startInfo.RedirectStandardInput = false;
+            startInfo.RedirectStandardOutput = true;
+
+            startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
+            startInfo.ErrorDialog = false;
+
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo = startInfo;
+            proc.OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(OnDataReceived);
+            proc.Start();
+
+            proc.BeginOutputReadLine();
+            proc.Close();
         }
     }
 }
