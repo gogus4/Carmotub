@@ -57,8 +57,10 @@ namespace Carmotub.Views.Controls
         public async Task Init()
         {
             Customers = await CustomerVM.Instance.GetAllCustomer();
+
             await CustomerPhotoVM.Instance.GetAllPhoto();
 
+            NumberCustomers.Text = Customers.Count().ToString();
             DataGridCustomers.ItemsSource = Customers;
         }
 
@@ -96,11 +98,6 @@ namespace Carmotub.Views.Controls
                 case 5:
                     list_customers = Customers.Where(x => x.telephone_2.ToUpper().Contains(SearchBoxText.Text.ToUpper())).ToList();
                     break;
-
-                // A COMPLETER
-                case 6:
-                    list_customers = Customers.Where(x => x.telephone_2.ToUpper().Contains(SearchBoxText.Text.ToUpper())).ToList();
-                    break;
             }
 
             DataGridCustomers.ItemsSource = list_customers;
@@ -119,6 +116,90 @@ namespace Carmotub.Views.Controls
             {
                 MessageBox.Show("Merci de selectionné un client avant de le modifier.", "Aucun client selectionné", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void SearchBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                switch (SearchBy.SelectedIndex)
+                {
+                    case 6:
+                        SearchBorder.Visibility = Visibility.Collapsed;
+                        SearchByNumberIntervention.Visibility = Visibility.Visible;
+                        SelectDateIntervention.Visibility = Visibility.Collapsed;
+                        SearchMonthInterventionStackPanel.Visibility = Visibility.Collapsed;
+                        break;
+
+                    case 7:
+                        SearchByNumberIntervention.Visibility = Visibility.Collapsed;
+                        SearchBorder.Visibility = Visibility.Collapsed;
+                        SelectDateIntervention.Visibility = Visibility.Visible;
+                        SearchMonthInterventionStackPanel.Visibility = Visibility.Collapsed;
+                        break;
+
+                    case 8:
+                        SearchByNumberIntervention.Visibility = Visibility.Collapsed;
+                        SearchBorder.Visibility = Visibility.Collapsed;
+                        SelectDateIntervention.Visibility = Visibility.Collapsed;
+                        SearchMonthInterventionStackPanel.Visibility = Visibility.Visible;
+                        break;
+
+                    default:
+                        SearchBorder.Visibility = Visibility.Visible;
+                        SearchByNumberIntervention.Visibility = Visibility.Collapsed;
+                        SelectDateIntervention.Visibility = Visibility.Collapsed;
+                        SearchMonthInterventionStackPanel.Visibility = Visibility.Collapsed;
+                        break;
+                }
+            }
+            catch (Exception E) { }
+        }
+
+        private void SelectDateIntervention_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.date == SelectDateIntervention.Text).ToList();
+
+            var customers = new List<Customer>();
+
+            foreach (Intervention inter in list_interventions)
+            {
+                var customer_find = Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault();
+                customers.Add(customer_find);
+            }
+
+            DataGridCustomers.ItemsSource = customers;
+        }
+
+        private void ValidSearchByMonth_Click(object sender, RoutedEventArgs e)
+        {
+            var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.date_intervention.Month == SearchByMonthIntervention.SelectedIndex + 1).ToList();
+
+            var customers = new List<Customer>();
+
+            foreach (Intervention inter in list_interventions)
+            {
+                var customer_find = Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault();
+
+                if (customers.Where(x => x.identifiant == customer_find.identifiant).Count() == 0)
+                    customers.Add(customer_find);
+            }
+
+            DataGridCustomers.ItemsSource = customers;
+        }
+
+        private void ValidSearchByNumberIntervention_Click(object sender, RoutedEventArgs e)
+        {
+            List<Customer> list_customers = new List<Customer>();
+            foreach (Customer customer in Customers)
+            {
+                var list_intervention = InterventionVM.Instance.Interventions.Where(x => x.identifiant_client == customer.identifiant);
+
+                if (list_intervention.Count() == NumberIntervention.SelectedIndex)
+                    list_customers.Add(customer);
+            }
+
+            DataGridCustomers.ItemsSource = list_customers;
         }
     }
 }

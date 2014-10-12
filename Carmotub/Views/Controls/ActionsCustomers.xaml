@@ -6,24 +6,33 @@
              mc:Ignorable="d" Unloaded="UserControl_Unloaded" Initialized="UserControl_Initialized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="34"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
-            <TextBlock Text="Rechercher par :" FontSize="12" FontFamily="Segoe UI Light"/>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Margin="0,0,10,0">
+            <TextBlock FontSize="12" FontFamily="Segoe UI Light">
+                <Run Text="Nombre de clients : "/>
+                <Run x:Name="NumberCustomers"/>
+            </TextBlock>
+        </StackPanel>
 
-            <ComboBox x:Name="SearchBy" Margin="5,0,0,0" VerticalAlignment="Center" SelectedIndex="0" Width="100" BorderBrush="LightGray" FontSize="12" FontFamily="Segoe UI Light">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+            <TextBlock Text="Rechercher par :" VerticalAlignment="Center" FontSize="12" FontFamily="Segoe UI Light"/>
+
+            <ComboBox x:Name="SearchBy" Margin="5,0,0,0" VerticalAlignment="Center" Height="20" SelectedIndex="0" Width="160" BorderBrush="LightGray" FontSize="12" FontFamily="Segoe UI Light" SelectionChanged="SearchBy_SelectionChanged">
                 <ComboBoxItem>Nom</ComboBoxItem>
                 <ComboBoxItem>Adresse</ComboBoxItem>
                 <ComboBoxItem>Code Postal</ComboBoxItem>
                 <ComboBoxItem>Numéro de téléphone fixe</ComboBoxItem>
                 <ComboBoxItem>Numéro de téléphone portable</ComboBoxItem>
                 <ComboBoxItem>Rendez-vous</ComboBoxItem>
+                <ComboBoxItem>Nombre d'interventions</ComboBoxItem>
+                <ComboBoxItem>Date</ComboBoxItem>
                 <ComboBoxItem>Mois</ComboBoxItem>
             </ComboBox>
 
-            <Border Margin="10,0,0,0" BorderBrush="LightGray" BorderThickness="1" Background="White">
+            <Border x:Name="SearchBorder" Margin="10,0,0,0" Height="20" BorderBrush="LightGray" Visibility="Visible" BorderThickness="1" Background="White">
                 <StackPanel Orientation="Horizontal">
                     <TextBox x:Name="SearchBoxText" Width="200" BorderBrush="Transparent" BorderThickness="0"/>
                     <Button x:Name="SearchButton" Background="Transparent" BorderBrush="Transparent" Click="SearchButton_Click">
@@ -34,12 +43,53 @@
                 </StackPanel>
             </Border>
 
+            <DatePicker x:Name="SelectDateIntervention" Visibility="Collapsed" BorderBrush="LightGray" Margin="10,0,0,0" HorizontalAlignment="Left" FontFamily="Segoe UI Light" Width="200" SelectedDateChanged="SelectDateIntervention_SelectedDateChanged"/>
+
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed" x:Name="SearchMonthInterventionStackPanel">
+                <ComboBox x:Name="SearchByMonthIntervention" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" SelectedIndex="0" Width="100" BorderBrush="LightGray" FontSize="12" FontFamily="Segoe UI Light" SelectionChanged="SearchBy_SelectionChanged">
+                    <ComboBoxItem>Janvier</ComboBoxItem>
+                    <ComboBoxItem>Fevrier</ComboBoxItem>
+                    <ComboBoxItem>Mars</ComboBoxItem>
+                    <ComboBoxItem>Avril</ComboBoxItem>
+                    <ComboBoxItem>Mai</ComboBoxItem>
+                    <ComboBoxItem>Juin</ComboBoxItem>
+                    <ComboBoxItem>Juillet</ComboBoxItem>
+                    <ComboBoxItem>Aout</ComboBoxItem>
+                    <ComboBoxItem>Septembre</ComboBoxItem>
+                    <ComboBoxItem>Octobre</ComboBoxItem>
+                    <ComboBoxItem>Novembre</ComboBoxItem>
+                    <ComboBoxItem>Decembre</ComboBoxItem>
+                </ComboBox>
+
+                <Button x:Name="ValidSearchByMonth" FontSize="12" Content="Valider" Margin="5,0,0,0" Width="60" Height="21" BorderBrush="LightGray" FontFamily="Segoe UI Light" Click="ValidSearchByMonth_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed" x:Name="SearchByNumberIntervention">
+                <ComboBox x:Name="NumberIntervention" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" SelectedIndex="0" Width="100" BorderBrush="LightGray" FontSize="12" FontFamily="Segoe UI Light" SelectionChanged="SearchBy_SelectionChanged">
+                    <ComboBoxItem>0</ComboBoxItem>
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>7</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>9</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                </ComboBox>
+
+                <Button x:Name="ValidSearchByNumberIntervention" FontSize="12" Content="Valider" Margin="5,0,0,0" Width="60" Height="21" BorderBrush="LightGray" FontFamily="Segoe UI Light" Click="ValidSearchByNumberIntervention_Click"/>
+
+                <TextBlock Text="L'opération peut durer quelques secondes ..." x:Name="LoadNumberIntervention" VerticalAlignment="Center" FontSize="12" FontFamily="Segoe UI Light" Margin="10,0,0,0"/>
+            </StackPanel>
+
         </StackPanel>
 
         <Grid Grid.Row="1">
             <ProgressBar x:Name="ProgressBackupDatabase" Visibility="Collapsed" Maximum="128"/>
 
-            <DataGrid x:Name="DataGridCustomers" ItemsSource="{Binding Customers}" FontFamily="Segoe UI Light" Background="White" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Stretch" CanUserDeleteRows="False" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" MouseDoubleClick="DataGridCustomers_MouseDoubleClick">
+            <DataGrid x:Name="DataGridCustomers" ColumnWidth="*" ItemsSource="{Binding Customers}" FontFamily="Segoe UI Light" Background="White" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Stretch" CanUserDeleteRows="False" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" MouseDoubleClick="DataGridCustomers_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nom" Binding="{Binding nom}" />
                     <DataGridTextColumn Header="Prénom" Binding="{Binding prenom}" />
@@ -49,10 +99,6 @@
                     <DataGridTextColumn Header="Rendez vous" Binding="{Binding Rdv}" />
                 </DataGrid.Columns>
             </DataGrid>
-        </Grid>
-
-        <Grid Grid.Row="1">
-
         </Grid>
     </Grid>
 </UserControl>

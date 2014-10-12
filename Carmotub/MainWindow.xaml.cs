@@ -100,7 +100,7 @@ namespace Carmotub
         private void OnDataReceived(object Sender, System.Diagnostics.DataReceivedEventArgs e)
         {
             Dispatcher.Invoke((Action)(() => ProgressBackupDatabase.Value += 1));
-            Dispatcher.Invoke((Action)(() => PourcentProgressBar.Text = Math.Round((ProgressBackupDatabase.Value * 100) / 128,0).ToString() + "%"));
+            Dispatcher.Invoke((Action)(() => PourcentProgressBar.Text = Math.Round((ProgressBackupDatabase.Value * 100) / 128, 0).ToString() + "%"));
 
 
             if (e.Data != null)
@@ -120,6 +120,7 @@ namespace Carmotub
 
         private void CreateBackup()
         {
+            ProgressBackupDatabase.Value = 0;
             string mysqldumpPath = ConfigurationManager.AppSettings["PathMysqlDump"] + "mysqldump.exe";
             string user = "root";
             string dbnm = "carmotub";
@@ -148,6 +149,18 @@ namespace Carmotub
 
             proc.BeginOutputReadLine();
             proc.Close();
+        }
+
+        private void PrintCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            /*string fileText = "__________________________________________________________________________" + Environment.NewLine + "Nom : MME GUILLET BRIGITTE" + Environment.NewLine + Environment.NewLine + "Adresse :  HERMEL 4 RUE" + Environment.NewLine + "        75018 PARIS";
+
+            FlowDocument doc = new FlowDocument(new Paragraph(new Run("Some text goes here")));
+            doc.Name = "FlowDoc";
+
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+                printDialog.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, "This is a Flow Document");*/
         }
     }
 }
