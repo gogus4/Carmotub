@@ -29,6 +29,22 @@ namespace Carmotub
         public MainWindow()
         {
             InitializeComponent();
+
+            GetLastDateTimeBackup();
+        }
+
+        private async void GetLastDateTimeBackup()
+        {
+            var lastDateTime = await BackupDatabaseVM.Instance.GetLastBackupDatabase();
+            var date = DateTime.Now.AddDays(-15);
+
+            if ((date.Month == lastDateTime.Month) && (date.Year == lastDateTime.Year) && (date.Day == lastDateTime.Day))
+            {
+                if (MessageBox.Show("Cela fait 15 jours que vous n'avez pas fait de sauvegarde de la base de données." + Environment.NewLine + "Voulez-vous en faire une ?", "Sauvegarde de la base de données", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    StartBackupDatabase();
+                }
+            }
         }
 
         private async void DisplayCalendar_Click(object sender, RoutedEventArgs e)
@@ -89,7 +105,7 @@ namespace Carmotub
                 MessageBox.Show("Merci de selectionné un client pour pouvoir affecté l'intervention à un client.", "Aucun client selectionné", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
-        private void BackupDatabase_Click(object sender, RoutedEventArgs e)
+        private async void StartBackupDatabase()
         {
             GridTransparentLoading.Visibility = Visibility.Visible;
             ProgressBarLoadingBackupDatabase.Visibility = Visibility.Visible;
@@ -97,11 +113,15 @@ namespace Carmotub
             CreateBackup();
         }
 
-        private void OnDataReceived(object Sender, System.Diagnostics.DataReceivedEventArgs e)
+        private void BackupDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            StartBackupDatabase();
+        }
+
+        private async void OnDataReceived(object Sender, System.Diagnostics.DataReceivedEventArgs e)
         {
             Dispatcher.Invoke((Action)(() => ProgressBackupDatabase.Value += 1));
             Dispatcher.Invoke((Action)(() => PourcentProgressBar.Text = Math.Round((ProgressBackupDatabase.Value * 100) / 128, 0).ToString() + "%"));
-
 
             if (e.Data != null)
             {
@@ -112,6 +132,8 @@ namespace Carmotub
             {
                 Dispatcher.Invoke((Action)(() => GridTransparentLoading.Visibility = Visibility.Collapsed));
                 Dispatcher.Invoke((Action)(() => ProgressBarLoadingBackupDatabase.Visibility = Visibility.Collapsed));
+
+                await BackupDatabaseVM.Instance.AddBackupDatabase(DateTime.Now);
 
                 OutputStream.Flush();
                 OutputStream.Close();
