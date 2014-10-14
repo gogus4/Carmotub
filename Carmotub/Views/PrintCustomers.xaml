@@ -1,0 +1,49 @@
+﻿<Window x:Class="Carmotub.Views.PrintCustomers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Ajouter un client" Height="500" Width="510" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Impression fiches intervention" Margin="5,0,0,0" FontSize="36" FontFamily="Segoe UI Light"/>
+
+        <TextBlock Grid.Row="1" Text="Imprimer un client :" FontSize="20" FontFamily="Segoe UI Light" Margin="5,10,0,0"/>
+
+        <StackPanel Orientation="Vertical" Grid.Row="2">
+            <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                <TextBlock Text="Selectionner le client : " FontSize="14" FontFamily="Segoe UI Light" Margin="5,0,0,0"/>
+                <DataGrid x:Name="DataGridCustomers" Height="120" ColumnWidth="*" FontFamily="Segoe UI Light" Background="White" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Stretch" CanUserDeleteRows="False" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nom" Binding="{Binding nom}" />
+                        <DataGridTextColumn Header="Prénom" Binding="{Binding prenom}" />
+                        <DataGridTextColumn Header="Ville" Binding="{Binding ville}" />
+                        <DataGridTextColumn Header="Code postal" Binding="{Binding code_postal}" />
+                        <DataGridTextColumn Header="Num tel fixe " Binding="{Binding telephone_1}" />
+                        <DataGridTextColumn Header="Rendez vous" Binding="{Binding Rdv}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <Button Content="Imprimer le client" FontSize="14" FontFamily="Segoe UI Light" Width="140" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="3" Text="Imprimer le planning : " FontSize="20" FontFamily="Segoe UI Light" Margin="5,10,0,0"/>
+
+        <StackPanel Orientation="Vertical" Grid.Row="4">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Selectionner une date : " VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" Margin="5,0,0,0" />
+                <DatePicker BorderBrush="LightGray" SelectedDate="{x:Static sys:DateTime.Now}" FontSize="14" FontFamily="Segoe UI Light" Width="200" Margin="10,0,0,0" />
+            </StackPanel>
+
+            <Button Content="Imprimer le planning" FontSize="14" FontFamily="Segoe UI Light" Width="140" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
