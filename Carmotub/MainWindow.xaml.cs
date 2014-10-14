@@ -175,14 +175,8 @@ namespace Carmotub
 
         private void PrintCustomers_Click(object sender, RoutedEventArgs e)
         {
-            if (Carmotub.Views.PrintCustomers.Instance == null)
-            {
-                PrintCustomers printCustomers = new PrintCustomers();
-                printCustomers.Show();
-            }
-
-            else
-                Carmotub.Views.PrintCustomers.Instance.Show();
+            PrintCustomers printCustomers = new PrintCustomers();
+            printCustomers.Show();
 
             /*string fileText = "__________________________________________________________________________" + Environment.NewLine + "Nom : MME GUILLET BRIGITTE" + Environment.NewLine + Environment.NewLine + "Adresse :  HERMEL 4 RUE" + Environment.NewLine + "        75018 PARIS";
 
