@@ -102,5 +102,20 @@ namespace Carmotub.Views
                 printDialog.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, "This is a Flow Document");
             }*/
         }
+
+        private void PrintPlanning_Click(object sender, RoutedEventArgs e)
+        {
+            List<Customer> list_customers = new List<Customer>();
+            var interventions = InterventionVM.Instance.Interventions.Where(x => x.date == SelectedDate.Text);
+
+            foreach (Intervention inter in interventions)
+            {
+                if (list_customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault() == null)
+                {
+                    list_customers.Add(ActionsCustomers.Instance.Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault());
+                    Print(ActionsCustomers.Instance.Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault());
+                }
+            }
+        }
     }
 }
