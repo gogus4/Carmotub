@@ -81,6 +81,8 @@ namespace Carmotub.Views
 
                 fileText += intervention.date + "    " + String.Format("{0,-" + ((20 + type.Length) - type.Length).ToString() + "}", type) + String.Format("{0,-" + ((8 + carnet.Length) - carnet.Length).ToString() + "}", carnet) + String.Format("{0,-" + ((26 + nature.Length) - nature.Length).ToString() + "}", nature) + intervention.montant + Environment.NewLine;
             }
+
+            // cmd print : print /D:"Printer name" pathFile
         }
 
         private void PrintCustomer_Click(object sender, RoutedEventArgs e)
