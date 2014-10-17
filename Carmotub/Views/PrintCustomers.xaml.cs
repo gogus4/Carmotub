@@ -3,6 +3,9 @@ using Carmotub.ViewModel;
 using Carmotub.Views.Controls;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,7 +85,22 @@ namespace Carmotub.Views
                 fileText += intervention.date + "    " + String.Format("{0,-" + ((20 + type.Length) - type.Length).ToString() + "}", type) + String.Format("{0,-" + ((8 + carnet.Length) - carnet.Length).ToString() + "}", carnet) + String.Format("{0,-" + ((26 + nature.Length) - nature.Length).ToString() + "}", nature) + intervention.montant + Environment.NewLine;
             }
 
-            // cmd print : print /D:"Printer name" pathFile
+            string filename = "printer_" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + "." + DateTime.Now.Minute + "." + DateTime.Now.Second + "." + DateTime.Now.Millisecond + ".txt";
+
+            using (FileStream fs = File.Create(filename)) 
+            {
+                Byte[] title = new UTF8Encoding(true).GetBytes(fileText);
+                fs.Write(title, 0, title.Length);
+            }
+
+            string pathFile = Directory.GetCurrentDirectory() + "\\" + filename;
+
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = pathFile;
+            psi.Verb = "Print";
+            Process.Start(psi).WaitForExit();
+
+            File.Delete(pathFile);
         }
 
         private void PrintCustomer_Click(object sender, RoutedEventArgs e)
@@ -96,13 +114,6 @@ namespace Carmotub.Views
             }
 
             Print(customer);
-
-            /*PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
-            {
-                doc.PageWidth = printDialog.PrintableAreaWidth;
-                printDialog.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, "This is a Flow Document");
-            }*/
         }
 
         private void PrintPlanning_Click(object sender, RoutedEventArgs e)
