@@ -32,9 +32,9 @@ namespace Carmotub.ViewModel
             try
             {
                 string query = "DELETE FROM clients WHERE identifiant = @identifiant";
-                await SQLDataHelper.Instance.OpenConnection();
 
                 await InterventionVM.Instance.DeleteInterventionWithCustomer(customer);
+                await SQLDataHelper.Instance.OpenConnection();
 
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
                 cmd.Prepare();

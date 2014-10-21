@@ -31,7 +31,7 @@
             <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Ajouter une intervention" Grid.ColumnSpan="3" Margin="5,0,0,0" FontSize="34" FontFamily="Segoe UI Light"/>
+        <TextBlock Text="Modifier une intervention" Grid.ColumnSpan="3" Margin="5,0,0,0" FontSize="34" FontFamily="Segoe UI Light"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="5" Margin="0,5,0,0">
             <TextBlock FontFamily="Segoe UI" Margin="5,0,0,0">
