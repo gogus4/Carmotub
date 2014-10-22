@@ -39,7 +39,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -73,6 +75,9 @@
     </Compile>
     <Compile Include="Views\PopupPhotoCustomer.xaml.cs">
       <DependentUpon>PopupPhotoCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UpdateIntervention.xaml.cs">
       <DependentUpon>UpdateIntervention.xaml</DependentUpon>
@@ -109,6 +114,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PopupPhotoCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +209,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Ribbon\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

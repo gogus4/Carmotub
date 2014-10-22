@@ -79,7 +79,9 @@ namespace Carmotub.Views
                 telephone_1 = TelFixe.Text,
                 telephone_2 = TelPortable.Text,
                 recommande_par = RecommandePar.Text,
-                Rdv = Rdv.Text
+                Rdv = Rdv.Text,
+                voie = Voie.Text,
+                numero_adresse = NumAdresse.Text
             };
 
             if (await CustomerVM.Instance.UpdateCustomer(customer) == true)
@@ -113,6 +115,7 @@ namespace Carmotub.Views
                 Nullable<bool> result = openfile.ShowDialog();
                 if (result == true)
                 {
+                    //string path = @"C:\Program Files (x86)\Carmotub\Photos\" + openfile.SafeFileName
                     string path = @"C:\Users\" + Environment.UserName + @"\Documents\Carmotub\Photos\" + openfile.SafeFileName;
                     File.Copy(openfile.FileName, path);
 

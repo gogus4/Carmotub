@@ -30,6 +30,29 @@ namespace Carmotub.ViewModel
         {
         }
 
+        public async Task<bool> DeletePhotoWithCustomer(Customer customer)
+        {
+            try
+            {
+                string query = "DELETE FROM photos_client WHERE identifiant_client = @identifiant_client";
+                await SQLDataHelper.Instance.OpenConnection();
+
+                MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
+                cmd.Prepare();
+
+                cmd.Parameters.Add("@identifiant_client", customer.identifiant);
+                cmd.ExecuteNonQuery();
+
+                await GetAllPhoto();
+            }
+            catch (Exception E)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public async Task<bool> DeletePhoto(CustomerPhoto photo)
         {
             try

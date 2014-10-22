@@ -529,6 +529,12 @@
         </Grid.RowDefinitions>
 
         <Ribbon Template="{StaticResource template}" Grid.Row="0" VerticalAlignment="Top" BorderBrush="LightGray" Foreground="Black" Background="White">
+
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Visibility="Collapsed" >
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+
             <RibbonTab Header="Fonctions">
                 <RibbonGroup Header="Actions">
                     <RibbonButton x:Name="AddCustomer" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/add_customer.png" Label="Nouveau client" Click="AddCustomer_Click"/>
@@ -536,6 +542,10 @@
                     <RibbonButton x:Name="AddIntervention" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/add_intervention.png" Label="Nouvelle intervention" Click="AddIntervention_Click"/>
                     <RibbonButton x:Name="PrintCustomers" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/print.png" Label="Imprimer" Click="PrintCustomers_Click"/>
                     <RibbonButton x:Name="BackupDatabase" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/backup_database.png" Label="Sauvegarde" Click="BackupDatabase_Click"/>
+                </RibbonGroup>
+
+                <RibbonGroup Header="">
+                    <RibbonButton x:Name="Configuration" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/settings.png" Label="Configuration" Click="Configuration_Click"/>
                 </RibbonGroup>
             </RibbonTab>
 

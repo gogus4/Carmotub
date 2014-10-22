@@ -13,6 +13,8 @@ namespace Carmotub.Model
         public string nom { get; set; }
         public string prenom { get; set; }
         public string adresse { get; set; }
+        public string numero_adresse { get; set; }
+        public string voie { get; set; }
         public string code_postal { get; set; }
         public string ville { get; set; }
         public string etage { get; set; }

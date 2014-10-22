@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Diego\Documents\GitHub\Carmotub\Carmotub\App.xaml
-9-1400713228
+101754887765
 
-25-284772438
-171536627763
-MainWindow.xaml;Views\PrintCustomers.xaml;Views\PopupPhotoCustomer.xaml;Views\UpdateIntervention.xaml;Views\AddIntervention.xaml;Views\AddCustomer.xaml;Views\Controls\ActionsCustomers.xaml;Views\Controls\Calendar.xaml;Views\UpdateCustomer.xaml;
+26-1001017282
+19-344391572
+MainWindow.xaml;Views\PrintCustomers.xaml;Views\PopupPhotoCustomer.xaml;Views\Settings.xaml;Views\UpdateIntervention.xaml;Views\AddIntervention.xaml;Views\AddCustomer.xaml;Views\Controls\ActionsCustomers.xaml;Views\Controls\Calendar.xaml;Views\UpdateCustomer.xaml;
 
 False
 

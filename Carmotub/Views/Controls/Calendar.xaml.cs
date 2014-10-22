@@ -47,7 +47,7 @@ namespace Carmotub.Views.Controls
 
         private void scheduler1_OnScheduleDoubleClick(object sender, DateTime ev)
         {
-
+            // Add intervention with calendar
         }
 
         public void SelectMonth(int month)

@@ -28,4 +28,10 @@
 		</TaggedOutputs> -->
 	</ItemGroup>
 	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2013Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\Carmotub\Carmotub.csproj">
+			<Name>Carmotub</Name>
+			<Project>{8B2A70F1-CBBC-4E43-9258-2F719E208AEA}</Project>
+		</ProjectReference>
+	</ItemGroup>
 </Project>

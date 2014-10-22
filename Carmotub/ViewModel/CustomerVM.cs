@@ -34,6 +34,8 @@ namespace Carmotub.ViewModel
                 string query = "DELETE FROM clients WHERE identifiant = @identifiant";
 
                 await InterventionVM.Instance.DeleteInterventionWithCustomer(customer);
+                await CustomerPhotoVM.Instance.DeletePhotoWithCustomer(customer);
+
                 await SQLDataHelper.Instance.OpenConnection();
 
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
@@ -54,7 +56,7 @@ namespace Carmotub.ViewModel
         {
             try
             {
-                string query = "UPDATE clients SET nom = @nom, prenom = @prenom, adresse = @adresse, code_postal = @code_postal, ville = @ville, etage = @etage, escalier = @escalier, telephone_1=@telephone_1,telephone_2=@telephone_2,commentaire=@commentaire,code=@code,rdv=@rdv,recommande_par=@recommande_par WHERE identifiant = @identifiant";
+                string query = "UPDATE clients SET nom = @nom, prenom = @prenom, adresse = @adresse, code_postal = @code_postal, ville = @ville, etage = @etage, escalier = @escalier, telephone_1=@telephone_1,telephone_2=@telephone_2,commentaire=@commentaire,code=@code,rdv=@rdv,recommande_par=@recommande_par,voie=@voie,numero_adresse=@numero_adresse WHERE identifiant = @identifiant";
                 await SQLDataHelper.Instance.OpenConnection();
 
 
@@ -75,6 +77,8 @@ namespace Carmotub.ViewModel
                 cmd.Parameters.Add("@rdv", customer.Rdv);
                 cmd.Parameters.Add("@recommande_par", customer.recommande_par);
                 cmd.Parameters.Add("@identifiant", customer.identifiant);
+                cmd.Parameters.Add("@voie", customer.voie);
+                cmd.Parameters.Add("@numero_adresse", customer.numero_adresse);
 
                 cmd.ExecuteNonQuery();
             }
@@ -90,7 +94,7 @@ namespace Carmotub.ViewModel
         {
             try
             {
-                string query = "INSERT INTO clients(nom,prenom,adresse,code_postal,ville,etage,escalier,telephone_1,telephone_2,commentaire,recommande_par,code,rdv) VALUES(@nom,@prenom,@adresse,@code_postal,@ville,@etage,@escalier,@telephone_1,@telephone_2,@commentaire,@recommande_par,@code,@rdv)";
+                string query = "INSERT INTO clients(nom,prenom,adresse,code_postal,ville,etage,escalier,telephone_1,telephone_2,commentaire,recommande_par,code,rdv,voie,numero_adresse) VALUES(@nom,@prenom,@adresse,@code_postal,@ville,@etage,@escalier,@telephone_1,@telephone_2,@commentaire,@recommande_par,@code,@rdv,@voie,@numero_adresse)";
                 await SQLDataHelper.Instance.OpenConnection();
 
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
@@ -109,6 +113,8 @@ namespace Carmotub.ViewModel
                 cmd.Parameters.Add("@recommande_par", customer.recommande_par);
                 cmd.Parameters.Add("@code", customer.code);
                 cmd.Parameters.Add("@rdv", customer.Rdv);
+                cmd.Parameters.Add("@voie", customer.voie);
+                cmd.Parameters.Add("@numero_adresse", customer.numero_adresse);
 
                 cmd.ExecuteNonQuery();
             }
@@ -147,7 +153,9 @@ namespace Carmotub.ViewModel
                         recommande_par = dataReader["recommande_par"].ToString(),
                         telephone_1 = dataReader["telephone_1"].ToString(),
                         telephone_2 = dataReader["telephone_2"].ToString(),
-                        ville = dataReader["ville"].ToString()
+                        ville = dataReader["ville"].ToString(),
+                        voie = dataReader["voie"].ToString(),
+                        numero_adresse = dataReader["numero_adresse"].ToString()
                     });
                 }
 

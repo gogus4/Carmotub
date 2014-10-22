@@ -41,7 +41,9 @@ namespace Carmotub.Views
                 telephone_1 = TelFixe.Text,
                 telephone_2 = TelPortable.Text,
                 recommande_par = RecommandePar.Text,
-                Rdv = Rdv.Text
+                Rdv = Rdv.Text,
+                voie = Voie.Text,
+                numero_adresse = NumAdresse.Text
             };
 
             if (await CustomerVM.Instance.AddCustomer(customer) == true)

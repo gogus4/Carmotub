@@ -177,15 +177,12 @@ namespace Carmotub
         {
             PrintCustomers printCustomers = new PrintCustomers();
             printCustomers.Show();
+        }
 
-            /*string fileText = "__________________________________________________________________________" + Environment.NewLine + "Nom : MME GUILLET BRIGITTE" + Environment.NewLine + Environment.NewLine + "Adresse :  HERMEL 4 RUE" + Environment.NewLine + "        75018 PARIS";
-
-            FlowDocument doc = new FlowDocument(new Paragraph(new Run("Some text goes here")));
-            doc.Name = "FlowDoc";
-
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
-                printDialog.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, "This is a Flow Document");*/
+        private void Configuration_Click(object sender, RoutedEventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
     }
 }
