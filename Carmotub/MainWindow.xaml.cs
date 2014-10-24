@@ -38,13 +38,21 @@ namespace Carmotub
             var lastDateTime = await BackupDatabaseVM.Instance.GetLastBackupDatabase();
             var date = DateTime.Now.AddDays(-15);
 
-            if ((date.Month == lastDateTime.Month) && (date.Year == lastDateTime.Year) && (date.Day == lastDateTime.Day))
+            if (date.CompareTo(lastDateTime) > 0)
             {
                 if (MessageBox.Show("Cela fait 15 jours que vous n'avez pas fait de sauvegarde de la base de données." + Environment.NewLine + "Voulez-vous en faire une ?", "Sauvegarde de la base de données", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     StartBackupDatabase();
                 }
             }
+
+            /*if ((date.Month == lastDateTime.Month) && (date.Year == lastDateTime.Year) && (date.Day == lastDateTime.Day))
+            {
+                if (MessageBox.Show("Cela fait 15 jours que vous n'avez pas fait de sauvegarde de la base de données." + Environment.NewLine + "Voulez-vous en faire une ?", "Sauvegarde de la base de données", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    StartBackupDatabase();
+                }
+            }*/
         }
 
         private async void DisplayCalendar_Click(object sender, RoutedEventArgs e)
@@ -149,7 +157,7 @@ namespace Carmotub
 
             string cmd = String.Format("-u{0} --opt --databases {1}", user, dbnm);
 
-            string filePath = ConfigurationManager.AppSettings["PathUsbDatabase"] + "db" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + ".sql";
+            string filePath = ConfigurationManager.AppSettings["PathUsbDatabase"] + @"\db" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + ".sql";
             OutputStream = new StreamWriter(filePath);
 
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();

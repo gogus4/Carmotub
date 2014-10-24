@@ -64,7 +64,7 @@ namespace Carmotub.ViewModel
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
                 cmd.Prepare();
 
-                cmd.Parameters.Add("@date_intervention", intervention.date_intervention);
+                cmd.Parameters.Add("@date_intervention", intervention.date);
                 cmd.Parameters.Add("@type_chaudiere", intervention.type_chaudiere);
                 cmd.Parameters.Add("@carnet", intervention.carnet);
                 cmd.Parameters.Add("@nature", intervention.nature);
@@ -96,7 +96,7 @@ namespace Carmotub.ViewModel
                 cmd.Prepare();
 
                 cmd.Parameters.Add("@identifiant_client", intervention.identifiant_client);
-                cmd.Parameters.Add("@date_intervention", intervention.date_intervention);
+                cmd.Parameters.Add("@date_intervention", intervention.date);
                 cmd.Parameters.Add("@type_chaudiere", intervention.type_chaudiere);
                 cmd.Parameters.Add("@carnet", intervention.carnet);
                 cmd.Parameters.Add("@nature", intervention.nature);
@@ -140,6 +140,7 @@ namespace Carmotub.ViewModel
 
         public async Task<bool> GetAllIntervention()
         {
+            int i = 0;
             try
             {
                 _interventions = new ObservableCollection<Intervention>();
@@ -147,16 +148,25 @@ namespace Carmotub.ViewModel
                 await SQLDataHelper.Instance.OpenConnection();
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
+                
 
                 while (dataReader.Read())
                 {
+                    i++;
                     double montant;
                     bool result = Double.TryParse(dataReader["montant"].ToString().Replace(".",","), out montant);
+
+                    DateTime date_error = new DateTime(1900, 1, 1,0,0,0);
+
+                    if(dataReader["date_intervention"].ToString() != "")
+                    {
+                        date_error = Convert.ToDateTime(dataReader["date_intervention"].ToString());
+                    }
 
                     _interventions.Add(new Intervention()
                         {
                             carnet = dataReader["carnet"].ToString(),
-                            date_intervention = Convert.ToDateTime(dataReader["date_intervention"].ToString()),
+                            date_intervention = date_error,
                             identifiant = int.Parse(dataReader["identifiant"].ToString()),
                             identifiant_client = int.Parse(dataReader["identifiant_client"].ToString()),
                             montant = montant,
@@ -171,6 +181,7 @@ namespace Carmotub.ViewModel
             }
             catch(Exception E)
             {
+                int l = i;
                 return false;
             }
         }

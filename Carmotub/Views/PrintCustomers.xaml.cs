@@ -59,35 +59,39 @@ namespace Carmotub.Views
             fileText += "Nom :  " + customer.prenom + " " + customer.nom + Environment.NewLine + Environment.NewLine;
             fileText += "Adresse :  " + customer.adresse + Environment.NewLine + "           " + customer.code_postal + " " + customer.ville + Environment.NewLine + Environment.NewLine;
             fileText += "Etage :  " + customer.etage + "                       Escalier : " + customer.escalier + Environment.NewLine + Environment.NewLine;
-            fileText += "Numéro de téléphone fixe :  " + customer.telephone_1 + Environment.NewLine + Environment.NewLine;
-            fileText += "Numéro de téléphone portable :  " + customer.telephone_2 + Environment.NewLine + Environment.NewLine;
+            fileText += "Téléphone fixe :  " + customer.telephone_1;
+            fileText += " Téléphone portable :  " + customer.telephone_2 + Environment.NewLine + Environment.NewLine;
             fileText += "Commentaires :  " + customer.commentaire + Environment.NewLine;
             fileText += "________________________________________________________________________________" + Environment.NewLine + Environment.NewLine;
-            fileText += "Date          Type                Carnet  Nature                    Montant       " + Environment.NewLine;
+
 
             var interventions = InterventionVM.Instance.Interventions.Where(x => x.identifiant_client == customer.identifiant).OrderByDescending(x => x.date_intervention);
 
-            foreach (Intervention intervention in interventions)
+            if (interventions.Count() > 0)
             {
-                var type = intervention.type_chaudiere;
-                var carnet = intervention.carnet;
-                var nature = intervention.nature;
+                fileText += "Date          Type                Carnet  Nature                    Montant       " + Environment.NewLine;
+                foreach (Intervention intervention in interventions)
+                {
+                    var type = intervention.type_chaudiere;
+                    var carnet = intervention.carnet;
+                    var nature = intervention.nature;
 
-                if (type.Length > 20)
-                    type = type.Substring(0, 20);
+                    if (type.Length > 20)
+                        type = type.Substring(0, 20);
 
-                if (carnet.Length > 8)
-                    carnet = carnet.Substring(0, 8);
+                    if (carnet.Length > 8)
+                        carnet = carnet.Substring(0, 8);
 
-                if (nature.Length > 26)
-                    nature = nature.Substring(0, 26);
+                    if (nature.Length > 26)
+                        nature = nature.Substring(0, 26);
 
-                fileText += intervention.date + "    " + String.Format("{0,-" + ((20 + type.Length) - type.Length).ToString() + "}", type) + String.Format("{0,-" + ((8 + carnet.Length) - carnet.Length).ToString() + "}", carnet) + String.Format("{0,-" + ((26 + nature.Length) - nature.Length).ToString() + "}", nature) + intervention.montant + Environment.NewLine;
+                    fileText += intervention.date + "    " + String.Format("{0,-" + ((20 + type.Length) - type.Length).ToString() + "}", type) + String.Format("{0,-" + ((8 + carnet.Length) - carnet.Length).ToString() + "}", carnet) + String.Format("{0,-" + ((26 + nature.Length) - nature.Length).ToString() + "}", nature) + intervention.montant + Environment.NewLine;
+                }
             }
 
             string filename = "printer_" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + "." + DateTime.Now.Minute + "." + DateTime.Now.Second + "." + DateTime.Now.Millisecond + ".txt";
 
-            using (FileStream fs = File.Create(filename)) 
+            using (FileStream fs = File.Create(filename))
             {
                 Byte[] title = new UTF8Encoding(true).GetBytes(fileText);
                 fs.Write(title, 0, title.Length);
