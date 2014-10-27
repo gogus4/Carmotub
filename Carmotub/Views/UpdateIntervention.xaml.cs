@@ -64,14 +64,16 @@ namespace Carmotub.Views
         {
             if (await InterventionVM.Instance.DeleteIntervention(Intervention) == true)
             {
+                //if (await InterventionVM.Instance.GetAllIntervention() == true)
+                //{
                 UpdateCustomer.Instance.RefreshDataGridInterventions();
                 this.Close();
+                //}
+
+                //else MessageBox.Show("Une erreur est intervenue lors de la suppression du client.");
             }
 
-            else
-            {
-                MessageBox.Show("Une erreur est intervenue lors de la modification du client.");
-            }
+            else MessageBox.Show("Une erreur est intervenue lors de la suppression du client.");
         }
     }
 }

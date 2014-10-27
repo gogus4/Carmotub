@@ -3,19 +3,11 @@ using Carmotub.ViewModel;
 using Carmotub.Views.Controls;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Carmotub.Views
 {
@@ -115,7 +107,6 @@ namespace Carmotub.Views
                 Nullable<bool> result = openfile.ShowDialog();
                 if (result == true)
                 {
-                    //string path = @"C:\Program Files (x86)\Carmotub\Photos\" + openfile.SafeFileName
                     string path = @"C:\Users\" + Environment.UserName + @"\Documents\Carmotub\Photos\" + openfile.SafeFileName;
                     File.Copy(openfile.FileName, path);
 
@@ -131,7 +122,7 @@ namespace Carmotub.Views
                     }
                 }
             }
-            catch(Exception E)
+            catch (Exception E)
             {
                 MessageBox.Show(E.StackTrace);
             }

@@ -64,7 +64,6 @@ namespace Carmotub.Views
                     numero_cheque = NumeroCheque.Text,
                     type_chaudiere = TypeChaudiere.Text,
                     type_paiement = TypePaiement.Text
-
                 };
 
                 if (await InterventionVM.Instance.AddIntervention(intervention) == true)

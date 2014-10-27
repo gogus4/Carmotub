@@ -45,14 +45,6 @@ namespace Carmotub
                     StartBackupDatabase();
                 }
             }
-
-            /*if ((date.Month == lastDateTime.Month) && (date.Year == lastDateTime.Year) && (date.Day == lastDateTime.Day))
-            {
-                if (MessageBox.Show("Cela fait 15 jours que vous n'avez pas fait de sauvegarde de la base de données." + Environment.NewLine + "Voulez-vous en faire une ?", "Sauvegarde de la base de données", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-                {
-                    StartBackupDatabase();
-                }
-            }*/
         }
 
         private async void DisplayCalendar_Click(object sender, RoutedEventArgs e)
@@ -63,7 +55,7 @@ namespace Carmotub
             await Carmotub.Views.Controls.Calendar.Instance.refreshCalendar();
         }
 
-        private async void DisplayListCustomers_Click(object sender, RoutedEventArgs e)
+        private void DisplayListCustomers_Click(object sender, RoutedEventArgs e)
         {
             ListCustomers.Visibility = Visibility.Visible;
             Calendar.Visibility = Visibility.Collapsed;

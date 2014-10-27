@@ -2,10 +2,7 @@
 using Carmotub.Model;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Carmotub.ViewModel
@@ -105,7 +102,8 @@ namespace Carmotub.ViewModel
                 cmd.Parameters.Add("@numero_cheque", intervention.numero_cheque);
 
                 cmd.ExecuteNonQuery();
-                _interventions.Add(intervention);
+
+                await GetAllIntervention();
             }
             catch (Exception E)
             {
@@ -127,6 +125,7 @@ namespace Carmotub.ViewModel
 
                 cmd.Parameters.Add("@identifiant", intervention.identifiant);
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
 
                 await GetAllIntervention();
             }
@@ -144,12 +143,12 @@ namespace Carmotub.ViewModel
             try
             {
                 _interventions = new ObservableCollection<Intervention>();
+
                 string query = "SELECT * FROM interventions";
                 await SQLDataHelper.Instance.OpenConnection();
                 MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 
-
                 while (dataReader.Read())
                 {
                     i++;
@@ -163,11 +162,16 @@ namespace Carmotub.ViewModel
                         date_error = Convert.ToDateTime(dataReader["date_intervention"].ToString());
                     }
 
+                    int identifiant = int.Parse(dataReader["identifiant"].ToString());
+
+                    if (identifiant == 0)
+                        break;
+
                     _interventions.Add(new Intervention()
                         {
                             carnet = dataReader["carnet"].ToString(),
                             date_intervention = date_error,
-                            identifiant = int.Parse(dataReader["identifiant"].ToString()),
+                            identifiant = identifiant,
                             identifiant_client = int.Parse(dataReader["identifiant_client"].ToString()),
                             montant = montant,
                             nature = dataReader["nature"].ToString(),

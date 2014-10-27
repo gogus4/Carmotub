@@ -56,14 +56,17 @@ namespace Carmotub.Views
             string fileText = "Carmotub                         " + customer.prenom + " " + customer.nom;
 
             fileText += Environment.NewLine + "________________________________________________________________________________" + Environment.NewLine + Environment.NewLine;
-            fileText += "Nom :  " + customer.prenom + " " + customer.nom + Environment.NewLine + Environment.NewLine;
-            fileText += "Adresse :  " + customer.adresse + Environment.NewLine + "           " + customer.code_postal + " " + customer.ville + Environment.NewLine + Environment.NewLine;
-            fileText += "Etage :  " + customer.etage + "                       Escalier : " + customer.escalier + Environment.NewLine + Environment.NewLine;
-            fileText += "Téléphone fixe :  " + customer.telephone_1;
-            fileText += " Téléphone portable :  " + customer.telephone_2 + Environment.NewLine + Environment.NewLine;
+            fileText += "Nom :  " + customer.prenom + " " + customer.nom + "                     Rendez-vous : " + customer.Rdv + Environment.NewLine + Environment.NewLine;
+            fileText += "Adresse :  " + customer.adresse + "    N° " + customer.numero_adresse + "        Voie : " + customer.voie + Environment.NewLine + "           " + customer.code_postal + " " + customer.ville + Environment.NewLine + Environment.NewLine;
+            fileText += "Etage :  " + customer.etage + "          Escalier : " + customer.escalier + "               Code : " + customer.code + Environment.NewLine + Environment.NewLine;
+            fileText += "Tel fixe :  " + customer.telephone_1;
+
+            if (customer.telephone_2 != "")
+                fileText += " Tel port. :  " + customer.telephone_2;
+
+            fileText += "  Recommandé par : " + customer.recommande_par + Environment.NewLine + Environment.NewLine;
             fileText += "Commentaires :  " + customer.commentaire + Environment.NewLine;
             fileText += "________________________________________________________________________________" + Environment.NewLine + Environment.NewLine;
-
 
             var interventions = InterventionVM.Instance.Interventions.Where(x => x.identifiant_client == customer.identifiant).OrderByDescending(x => x.date_intervention);
 
