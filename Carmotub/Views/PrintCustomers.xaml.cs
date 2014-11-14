@@ -53,7 +53,7 @@ namespace Carmotub.Views
 
         private void Print(Customer customer)
         {
-            string fileText = "Carmotub                         " + customer.prenom + " " + customer.nom;
+            /*string fileText = "Carmotub                         " + customer.prenom + " " + customer.nom;
 
             fileText += Environment.NewLine + "________________________________________________________________________________" + Environment.NewLine + Environment.NewLine;
             fileText += "Nom :  " + customer.prenom + " " + customer.nom + "                     Rendez-vous : " + customer.Rdv + Environment.NewLine + Environment.NewLine;
@@ -107,7 +107,7 @@ namespace Carmotub.Views
             psi.Verb = "Print";
             Process.Start(psi).WaitForExit();
 
-            File.Delete(pathFile);
+            File.Delete(pathFile);*/
         }
 
         private void PrintCustomer_Click(object sender, RoutedEventArgs e)
@@ -125,7 +125,7 @@ namespace Carmotub.Views
 
         private void PrintPlanning_Click(object sender, RoutedEventArgs e)
         {
-            List<Customer> list_customers = new List<Customer>();
+            /*List<Customer> list_customers = new List<Customer>();
             var interventions = InterventionVM.Instance.Interventions.Where(x => x.date == SelectedDate.Text);
 
             foreach (Intervention inter in interventions)
@@ -135,7 +135,7 @@ namespace Carmotub.Views
                     list_customers.Add(ActionsCustomers.Instance.Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault());
                     Print(ActionsCustomers.Instance.Customers.Where(x => x.identifiant == inter.identifiant_client).FirstOrDefault());
                 }
-            }
+            }*/
         }
     }
 }

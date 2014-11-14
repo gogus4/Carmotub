@@ -49,7 +49,7 @@ namespace Carmotub.Views
 
         private async void AddInterventionButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            /*try
             {
                 double montant;
                 bool result = Double.TryParse(Montant.Text.Replace(".", ","), out montant);
@@ -77,7 +77,7 @@ namespace Carmotub.Views
             catch (Exception E)
             {
                 MessageBox.Show("Une erreur est intervenue lors de l'ajout de l'intervention.");
-            }
+            }*/
         }
     }
 }

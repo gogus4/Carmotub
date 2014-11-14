@@ -55,7 +55,7 @@ namespace Carmotub.Views
 
         private async void UpdateCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            string richText = new TextRange(Commentaire.Document.ContentStart, Commentaire.Document.ContentEnd).Text;
+            /*string richText = new TextRange(Commentaire.Document.ContentStart, Commentaire.Document.ContentEnd).Text;
             Customer customer = new Customer()
             {
                 identifiant = CustomerToUpdate.identifiant,
@@ -86,7 +86,7 @@ namespace Carmotub.Views
             else
             {
                 MessageBox.Show("Une erreur est intervenue lors de la modification du client.");
-            }
+            }*/
         }
 
         private void DataGridInterventions_MouseDoubleClick(object sender, MouseButtonEventArgs e)

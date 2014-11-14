@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carmotub", "Carmotub\Carmotub.csproj", "{8B2A70F1-CBBC-4E43-9258-2F719E208AEA}"
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "CarmotubSetup", "CarmotubSetup\CarmotubSetup.isproj", "{B8D6480E-3B88-4002-8F33-C9700FD44D8C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -26,16 +24,6 @@ Global
 		{8B2A70F1-CBBC-4E43-9258-2F719E208AEA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B2A70F1-CBBC-4E43-9258-2F719E208AEA}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{8B2A70F1-CBBC-4E43-9258-2F719E208AEA}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.CD_ROM|Any CPU.Build.0 = CD_ROM
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.Debug|Any CPU.ActiveCfg = CD_ROM
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.Debug|Any CPU.Build.0 = CD_ROM
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.DVD-5|Any CPU.ActiveCfg = DVD-5
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.DVD-5|Any CPU.Build.0 = DVD-5
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.Release|Any CPU.ActiveCfg = SingleImage
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.Release|Any CPU.Build.0 = SingleImage
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.SingleImage|Any CPU.ActiveCfg = SingleImage
-		{B8D6480E-3B88-4002-8F33-C9700FD44D8C}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

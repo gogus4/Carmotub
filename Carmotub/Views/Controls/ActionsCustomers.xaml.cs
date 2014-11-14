@@ -60,13 +60,15 @@ namespace Carmotub.Views.Controls
 
             await CustomerPhotoVM.Instance.GetAllPhoto();
 
-            NumberCustomers.Text = Customers.Count().ToString();
+            if (Customers != null)
+                NumberCustomers.Text = Customers.Count().ToString();
+
             DataGridCustomers.ItemsSource = Customers;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SearchBoxText.Text == "")
+            /*if (SearchBoxText.Text == "")
             {
                 DataGridCustomers.ItemsSource = Customers;
                 return;
@@ -100,7 +102,7 @@ namespace Carmotub.Views.Controls
                     break;
             }
 
-            DataGridCustomers.ItemsSource = list_customers;
+            DataGridCustomers.ItemsSource = list_customers;*/
         }
 
         private void DataGridCustomers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -158,7 +160,7 @@ namespace Carmotub.Views.Controls
 
         private void SelectDateIntervention_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.date == SelectDateIntervention.Text).ToList();
+            /*var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.date == SelectDateIntervention.Text).ToList();
 
             var customers = new List<Customer>();
 
@@ -168,12 +170,12 @@ namespace Carmotub.Views.Controls
                 customers.Add(customer_find);
             }
 
-            DataGridCustomers.ItemsSource = customers;
+            DataGridCustomers.ItemsSource = customers;*/
         }
 
         private void ValidSearchByMonth_Click(object sender, RoutedEventArgs e)
         {
-            var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.date_intervention.Month == SearchByMonthIntervention.SelectedIndex + 1).ToList();
+            /*var list_interventions = InterventionVM.Instance.Interventions.Where(x => x.date_intervention.Month == SearchByMonthIntervention.SelectedIndex + 1).ToList();
 
             var customers = new List<Customer>();
 
@@ -185,7 +187,7 @@ namespace Carmotub.Views.Controls
                     customers.Add(customer_find);
             }
 
-            DataGridCustomers.ItemsSource = customers;
+            DataGridCustomers.ItemsSource = customers;*/
         }
 
         private void ValidSearchByNumberIntervention_Click(object sender, RoutedEventArgs e)

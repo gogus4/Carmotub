@@ -29,7 +29,7 @@ namespace Carmotub.ViewModel
 
         public async Task<bool> AddBackupDatabase(DateTime newDatetime)
         {
-            try
+            /*try
             {
                 string query = "INSERT INTO backup_database(date) VALUES(@date)";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -44,14 +44,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<DateTime> GetLastBackupDatabase()
         {
-            try
+            /*try
             {
                 string query = "SELECT * FROM `backup_database` order by date desc LIMIT 1";
                 
@@ -64,7 +64,7 @@ namespace Carmotub.ViewModel
                     return (DateTime)dataReader["date"];
                 }
             }
-            catch (Exception E) { }
+            catch (Exception E) { }*/
 
             return DateTime.Now;
         }

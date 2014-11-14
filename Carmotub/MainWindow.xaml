@@ -547,6 +547,10 @@
                 <RibbonGroup Header="">
                     <RibbonButton x:Name="Configuration" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/settings.png" Label="Configuration" Click="Configuration_Click"/>
                 </RibbonGroup>
+
+                <RibbonGroup Header="">
+                    <RibbonButton x:Name="Administration" VerticalAlignment="Top" LargeImageSource="Assets/Ribbon/admin.png" Label="Administration" Click="Administration_Click"/>
+                </RibbonGroup>
             </RibbonTab>
 
             <RibbonTab Header="Affichage">

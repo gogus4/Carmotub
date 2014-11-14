@@ -31,7 +31,7 @@ namespace Carmotub.Views
 
         private async void UpdateIntervention_Click(object sender, RoutedEventArgs e)
         {
-            double montant;
+            /*double montant;
             bool result = Double.TryParse(Montant.Text.Replace(".", ","), out montant);
 
             Intervention intervention = new Intervention()
@@ -57,7 +57,7 @@ namespace Carmotub.Views
             else
             {
                 MessageBox.Show("Une erreur est intervenue lors de la modification de l'intervention.");
-            }
+            }*/
         }
 
         private async void DeleteInterventionButton_Click(object sender, RoutedEventArgs e)

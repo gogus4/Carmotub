@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="carmotubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BackupDatabase">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" Nullable="false" />
+          <Property Name="nom" Type="ntext" />
+          <Property Name="prenom" Type="ntext" />
+          <Property Name="adresse" Type="ntext" />
+          <Property Name="code_postal" Type="ntext" />
+          <Property Name="ville" Type="ntext" />
+          <Property Name="etage" Type="ntext" />
+          <Property Name="escalier" Type="ntext" />
+          <Property Name="telephone_1" Type="ntext" />
+          <Property Name="commentaire" Type="ntext" />
+          <Property Name="telephone_2" Type="ntext" />
+          <Property Name="code" Type="ntext" />
+          <Property Name="rdv" Type="ntext" />
+          <Property Name="recommande_par" Type="ntext" />
+          <Property Name="voie" Type="ntext" />
+          <Property Name="numero_adresse" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Intervention">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" Nullable="false" />
+          <Property Name="identifiant_client" Type="int" />
+          <Property Name="date_intervention" Type="ntext" />
+          <Property Name="type_chaudiere" Type="ntext" />
+          <Property Name="carnet" Type="ntext" />
+          <Property Name="nature" Type="ntext" />
+          <Property Name="montant" Type="ntext" />
+          <Property Name="montant_old" Type="ntext" />
+          <Property Name="numero_cheque" Type="ntext" />
+          <Property Name="type_paiement" Type="ntext" />
+        </EntityType>
+        <EntityType Name="PhotoClient">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="int" Nullable="false" />
+          <Property Name="uri" Type="ntext" />
+          <Property Name="identifiant_client" Type="int" />
+        </EntityType>
+        <Association Name="FK_interventions_clients">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Intervention" Type="Self.Intervention" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="Intervention">
+              <PropertyRef Name="identifiant_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_photos_client_clients">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="PhotoClient" Type="Self.PhotoClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="PhotoClient">
+              <PropertyRef Name="identifiant_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="carmotubModelStoreContainer">
+          <EntitySet Name="BackupDatabase" EntityType="Self.BackupDatabase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Intervention" EntityType="Self.Intervention" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhotoClient" EntityType="Self.PhotoClient" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_interventions_clients" Association="Self.FK_interventions_clients">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Intervention" EntitySet="Intervention" />
+          </AssociationSet>
+          <AssociationSet Name="FK_photos_client_clients" Association="Self.FK_photos_client_clients">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="PhotoClient" EntitySet="PhotoClient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="carmotubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CarmotubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BackupDatabase" EntityType="carmotubModel.BackupDatabase" />
+          <EntitySet Name="Customer" EntityType="carmotubModel.Customer" />
+          <EntitySet Name="Intervention" EntityType="carmotubModel.Intervention" />
+          <EntitySet Name="PhotoClient" EntityType="carmotubModel.PhotoClient" />
+          <AssociationSet Name="FK_interventions_clients1" Association="carmotubModel.FK_interventions_clients1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Intervention" EntitySet="Intervention" />
+          </AssociationSet>
+          <AssociationSet Name="FK_photos_client_clients1" Association="carmotubModel.FK_photos_client_clients1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="PhotoClient" EntitySet="PhotoClient" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BackupDatabase">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="code_postal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ville" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="etage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="escalier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telephone_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telephone_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rdv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="recommande_par" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="voie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="numero_adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Intervention" Relationship="carmotubModel.FK_interventions_clients1" FromRole="Customer" ToRole="Intervention" />
+          <NavigationProperty Name="PhotoClient" Relationship="carmotubModel.FK_photos_client_clients1" FromRole="Customer" ToRole="PhotoClient" />
+        </EntityType>
+        <EntityType Name="Intervention">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" />
+          <Property Name="identifiant_client" Type="Int32" />
+          <Property Name="date_intervention" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="type_chaudiere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="carnet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="montant" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="montant_old" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="numero_cheque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="type_paiement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="carmotubModel.FK_interventions_clients1" FromRole="Intervention" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="PhotoClient">
+          <Key>
+            <PropertyRef Name="identifiant" />
+          </Key>
+          <Property Name="identifiant" Type="Int32" Nullable="false" />
+          <Property Name="uri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="identifiant_client" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="carmotubModel.FK_photos_client_clients1" FromRole="PhotoClient" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_interventions_clients1">
+          <End Type="carmotubModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="carmotubModel.Intervention" Role="Intervention" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="Intervention">
+              <PropertyRef Name="identifiant_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_photos_client_clients1">
+          <End Type="carmotubModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="carmotubModel.PhotoClient" Role="PhotoClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="identifiant" />
+            </Principal>
+            <Dependent Role="PhotoClient">
+              <PropertyRef Name="identifiant_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="carmotubModelStoreContainer" CdmEntityContainer="CarmotubEntities">
+          <EntitySetMapping Name="BackupDatabase">
+            <EntityTypeMapping TypeName="carmotubModel.BackupDatabase">
+              <MappingFragment StoreEntitySet="BackupDatabase">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="carmotubModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="numero_adresse" ColumnName="numero_adresse" />
+                <ScalarProperty Name="voie" ColumnName="voie" />
+                <ScalarProperty Name="recommande_par" ColumnName="recommande_par" />
+                <ScalarProperty Name="rdv" ColumnName="rdv" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="telephone_2" ColumnName="telephone_2" />
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+                <ScalarProperty Name="telephone_1" ColumnName="telephone_1" />
+                <ScalarProperty Name="escalier" ColumnName="escalier" />
+                <ScalarProperty Name="etage" ColumnName="etage" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Intervention">
+            <EntityTypeMapping TypeName="carmotubModel.Intervention">
+              <MappingFragment StoreEntitySet="Intervention">
+                <ScalarProperty Name="type_paiement" ColumnName="type_paiement" />
+                <ScalarProperty Name="numero_cheque" ColumnName="numero_cheque" />
+                <ScalarProperty Name="montant_old" ColumnName="montant_old" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="nature" ColumnName="nature" />
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
+                <ScalarProperty Name="type_chaudiere" ColumnName="type_chaudiere" />
+                <ScalarProperty Name="date_intervention" ColumnName="date_intervention" />
+                <ScalarProperty Name="identifiant_client" ColumnName="identifiant_client" />
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhotoClient">
+            <EntityTypeMapping TypeName="carmotubModel.PhotoClient">
+              <MappingFragment StoreEntitySet="PhotoClient">
+                <ScalarProperty Name="identifiant_client" ColumnName="identifiant_client" />
+                <ScalarProperty Name="uri" ColumnName="uri" />
+                <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

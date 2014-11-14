@@ -123,7 +123,7 @@ namespace Carmotub.Views.Controls
 
         public async Task refreshCalendar()
         {
-            scheduler1.SelectedDate = CurrentDate;
+            /*scheduler1.SelectedDate = CurrentDate;
             SelectMonth(CurrentDate.Month);
 
             var interventions = InterventionVM.Instance.Interventions.Where(x => x.date_intervention.Month == CurrentDate.Month && x.date_intervention.Year == CurrentDate.Year);
@@ -135,7 +135,7 @@ namespace Carmotub.Views.Controls
 
                 if (scheduler1.Events.Where(x => x.Subject == customer.nom + " " + customer.adresse && x.Start == evenement.Start).FirstOrDefault() == null)
                     scheduler1.Events.Add(evenement);
-            }
+            }*/
         }
 
         private async void RefreshCalendar_Click(object sender, RoutedEventArgs e)

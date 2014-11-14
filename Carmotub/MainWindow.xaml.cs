@@ -184,5 +184,10 @@ namespace Carmotub
             Settings settings = new Settings();
             settings.Show();
         }
+
+        private void Administration_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

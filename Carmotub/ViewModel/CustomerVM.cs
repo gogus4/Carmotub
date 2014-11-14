@@ -29,7 +29,7 @@ namespace Carmotub.ViewModel
 
         public async Task<bool> DeleteCustomer(Customer customer)
         {
-            try
+            /*try
             {
                 string query = "DELETE FROM clients WHERE identifiant = @identifiant";
 
@@ -47,14 +47,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> UpdateCustomer(Customer customer)
         {
-            try
+            /*try
             {
                 string query = "UPDATE clients SET nom = @nom, prenom = @prenom, adresse = @adresse, code_postal = @code_postal, ville = @ville, etage = @etage, escalier = @escalier, telephone_1=@telephone_1,telephone_2=@telephone_2,commentaire=@commentaire,code=@code,rdv=@rdv,recommande_par=@recommande_par,voie=@voie,numero_adresse=@numero_adresse WHERE identifiant = @identifiant";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -85,14 +85,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> AddCustomer(Customer customer)
         {
-            try
+            /*try
             {
                 string query = "INSERT INTO clients(nom,prenom,adresse,code_postal,ville,etage,escalier,telephone_1,telephone_2,commentaire,recommande_par,code,rdv,voie,numero_adresse) VALUES(@nom,@prenom,@adresse,@code_postal,@ville,@etage,@escalier,@telephone_1,@telephone_2,@commentaire,@recommande_par,@code,@rdv,@voie,@numero_adresse)";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -121,50 +121,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<List<Customer>> GetAllCustomer()
         {
-            try
-            {
-                List<Customer> Customers = new List<Customer>();
-                string query = "SELECT * FROM clients";
-                await SQLDataHelper.Instance.OpenConnection();
-                MySqlCommand cmd = new MySqlCommand(query, SQLDataHelper.Instance.Connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    Customers.Add(new Customer()
-                    {
-                        adresse = dataReader["adresse"].ToString(),
-                        code = dataReader["code"].ToString(),
-                        code_postal = dataReader["code_postal"].ToString(),
-                        commentaire = dataReader["commentaire"].ToString(),
-                        escalier = dataReader["escalier"].ToString(),
-                        etage = dataReader["etage"].ToString(),
-                        identifiant = int.Parse(dataReader["identifiant"].ToString()),
-                        nom = dataReader["nom"].ToString(),
-                        prenom = dataReader["prenom"].ToString(),
-                        Rdv = dataReader["rdv"].ToString(),
-                        recommande_par = dataReader["recommande_par"].ToString(),
-                        telephone_1 = dataReader["telephone_1"].ToString(),
-                        telephone_2 = dataReader["telephone_2"].ToString(),
-                        ville = dataReader["ville"].ToString(),
-                        voie = dataReader["voie"].ToString(),
-                        numero_adresse = dataReader["numero_adresse"].ToString()
-                    });
-                }
-
-                return Customers;
-            }
-            catch (Exception E)
-            {
-                return null;
-            }
+            return CarmotubServerEntities.Instance.Customer.ToList();
         }
     }
 }

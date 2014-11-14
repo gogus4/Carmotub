@@ -31,7 +31,7 @@ namespace Carmotub.ViewModel
 
         public async Task<bool> DeleteInterventionWithCustomer(Customer customer)
         {
-            try
+            /*try
             {
                 string query = "DELETE FROM interventions WHERE identifiant_client = @identifiant_client";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -47,14 +47,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> UpdateIntervention(Intervention intervention)
         {
-            try
+            /*try
             {
                 string query = "UPDATE interventions SET date_intervention = @date_intervention, type_chaudiere = @type_chaudiere, carnet = @carnet, nature = @nature, montant = @montant, numero_cheque = @numero_cheque, type_paiement = @type_paiement WHERE identifiant = @identifiant";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -78,14 +78,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> AddIntervention(Intervention intervention)
         {
-            try
+            /*try
             {
                 string query = "INSERT INTO interventions(identifiant_client,date_intervention,type_chaudiere,carnet,nature,montant,type_paiement,numero_cheque) VALUES(@identifiant_client,@date_intervention,@type_chaudiere,@carnet,@nature,@montant,@type_paiement,@numero_cheque)";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -109,14 +109,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> DeleteIntervention(Intervention intervention)
         {
-            try
+            /*try
             {
                 string query = "DELETE FROM interventions WHERE identifiant = @identifiant";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -133,14 +133,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> GetAllIntervention()
         {
-            int i = 0;
+            /*int i = 0;
             try
             {
                 _interventions = new ObservableCollection<Intervention>();
@@ -188,7 +188,9 @@ namespace Carmotub.ViewModel
             {
                 int l = i;
                 return false;
-            }
+            }*/
+
+            return true;
         }
     }
 }

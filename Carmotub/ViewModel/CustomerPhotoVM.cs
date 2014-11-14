@@ -29,7 +29,7 @@ namespace Carmotub.ViewModel
 
         public async Task<bool> DeletePhotoWithCustomer(Customer customer)
         {
-            try
+            /*try
             {
                 string query = "DELETE FROM photos_client WHERE identifiant_client = @identifiant_client";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -45,14 +45,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> DeletePhoto(CustomerPhoto photo)
         {
-            try
+            /*try
             {
                 string query = "DELETE FROM photos_client WHERE identifiant = @identifiant";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -68,14 +68,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task<bool> AddPhoto(CustomerPhoto photo)
         {
-            try
+            /*try
             {
                 string query = "INSERT INTO photos_client(identifiant_client,uri) VALUES(@identifiant_client,@uri)";
                 await SQLDataHelper.Instance.OpenConnection();
@@ -91,14 +91,14 @@ namespace Carmotub.ViewModel
             catch (Exception E)
             {
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public async Task GetAllPhoto()
         {
-            try
+            /*try
             {
                 Photos = new ObservableCollection<CustomerPhoto>();
                 string query = "SELECT * FROM photos_client";
@@ -116,7 +116,7 @@ namespace Carmotub.ViewModel
                     });
                 }
             }
-            catch (Exception E) { }
+            catch (Exception E) { }*/
         }
     }
 }

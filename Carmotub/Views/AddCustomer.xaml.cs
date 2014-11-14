@@ -15,7 +15,7 @@ namespace Carmotub.Views
 
         private async void AddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            string richText = new TextRange(Commentaire.Document.ContentStart, Commentaire.Document.ContentEnd).Text;
+            /*string richText = new TextRange(Commentaire.Document.ContentStart, Commentaire.Document.ContentEnd).Text;
             Customer customer = new Customer()
             {
                 adresse = Adresse.Text,
@@ -46,7 +46,7 @@ namespace Carmotub.Views
             else
             {
                 MessageBox.Show("Une erreur est intervenue lors de l'ajout du client.");
-            }
+            }*/
         }
     }
 }
