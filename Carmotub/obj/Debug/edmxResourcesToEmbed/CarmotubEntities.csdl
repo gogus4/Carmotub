@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="carmotubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CarmotubEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BackupDatabase" EntityType="carmotubModel.BackupDatabase" />
+    <EntitySet Name="Customer" EntityType="carmotubModel.Customer" />
+    <EntitySet Name="Intervention" EntityType="carmotubModel.Intervention" />
+    <EntitySet Name="PhotoClient" EntityType="carmotubModel.PhotoClient" />
+    <AssociationSet Name="FK_interventions_clients1" Association="carmotubModel.FK_interventions_clients1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Intervention" EntitySet="Intervention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_photos_client_clients1" Association="carmotubModel.FK_photos_client_clients1">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="PhotoClient" EntitySet="PhotoClient" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BackupDatabase">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="code_postal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ville" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="etage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="escalier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="telephone_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="telephone_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rdv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="recommande_par" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="voie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="numero_adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Intervention" Relationship="carmotubModel.FK_interventions_clients1" FromRole="Customer" ToRole="Intervention" />
+    <NavigationProperty Name="PhotoClient" Relationship="carmotubModel.FK_photos_client_clients1" FromRole="Customer" ToRole="PhotoClient" />
+  </EntityType>
+  <EntityType Name="Intervention">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="Int32" Nullable="false" />
+    <Property Name="identifiant_client" Type="Int32" />
+    <Property Name="date_intervention" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="type_chaudiere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="carnet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="nature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="montant" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="montant_old" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="numero_cheque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="type_paiement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customer" Relationship="carmotubModel.FK_interventions_clients1" FromRole="Intervention" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="PhotoClient">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="Int32" Nullable="false" />
+    <Property Name="uri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="identifiant_client" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="carmotubModel.FK_photos_client_clients1" FromRole="PhotoClient" ToRole="Customer" />
+  </EntityType>
+  <Association Name="FK_interventions_clients1">
+    <End Type="carmotubModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="carmotubModel.Intervention" Role="Intervention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="identifiant" />
+      </Principal>
+      <Dependent Role="Intervention">
+        <PropertyRef Name="identifiant_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_photos_client_clients1">
+    <End Type="carmotubModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="carmotubModel.PhotoClient" Role="PhotoClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="identifiant" />
+      </Principal>
+      <Dependent Role="PhotoClient">
+        <PropertyRef Name="identifiant_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

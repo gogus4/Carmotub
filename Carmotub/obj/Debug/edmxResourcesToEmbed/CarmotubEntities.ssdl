@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="carmotubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BackupDatabase">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="int" Nullable="false" />
+    <Property Name="nom" Type="ntext" />
+    <Property Name="prenom" Type="ntext" />
+    <Property Name="adresse" Type="ntext" />
+    <Property Name="code_postal" Type="ntext" />
+    <Property Name="ville" Type="ntext" />
+    <Property Name="etage" Type="ntext" />
+    <Property Name="escalier" Type="ntext" />
+    <Property Name="telephone_1" Type="ntext" />
+    <Property Name="commentaire" Type="ntext" />
+    <Property Name="telephone_2" Type="ntext" />
+    <Property Name="code" Type="ntext" />
+    <Property Name="rdv" Type="ntext" />
+    <Property Name="recommande_par" Type="ntext" />
+    <Property Name="voie" Type="ntext" />
+    <Property Name="numero_adresse" Type="ntext" />
+  </EntityType>
+  <EntityType Name="Intervention">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="int" Nullable="false" />
+    <Property Name="identifiant_client" Type="int" />
+    <Property Name="date_intervention" Type="ntext" />
+    <Property Name="type_chaudiere" Type="ntext" />
+    <Property Name="carnet" Type="ntext" />
+    <Property Name="nature" Type="ntext" />
+    <Property Name="montant" Type="ntext" />
+    <Property Name="montant_old" Type="ntext" />
+    <Property Name="numero_cheque" Type="ntext" />
+    <Property Name="type_paiement" Type="ntext" />
+  </EntityType>
+  <EntityType Name="PhotoClient">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="int" Nullable="false" />
+    <Property Name="uri" Type="ntext" />
+    <Property Name="identifiant_client" Type="int" />
+  </EntityType>
+  <Association Name="FK_interventions_clients">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Intervention" Type="Self.Intervention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="identifiant" />
+      </Principal>
+      <Dependent Role="Intervention">
+        <PropertyRef Name="identifiant_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_photos_client_clients">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="PhotoClient" Type="Self.PhotoClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="identifiant" />
+      </Principal>
+      <Dependent Role="PhotoClient">
+        <PropertyRef Name="identifiant_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="carmotubModelStoreContainer">
+    <EntitySet Name="BackupDatabase" EntityType="Self.BackupDatabase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Intervention" EntityType="Self.Intervention" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhotoClient" EntityType="Self.PhotoClient" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_interventions_clients" Association="Self.FK_interventions_clients">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Intervention" EntitySet="Intervention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_photos_client_clients" Association="Self.FK_photos_client_clients">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="PhotoClient" EntitySet="PhotoClient" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
