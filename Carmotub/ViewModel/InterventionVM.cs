@@ -19,6 +19,7 @@ namespace Carmotub.ViewModel
             {
                 if (_instance == null)
                     _instance = new InterventionVM();
+
                 return _instance;
             }
         }
